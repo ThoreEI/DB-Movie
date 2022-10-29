@@ -46,11 +46,6 @@ nav {
     border: hidden;
 }
 
-section {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 48px 24px 24px;
-    box-sizing: border-box;
-    transform: translateY(-48px);
-}
+
+
+
