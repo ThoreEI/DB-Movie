@@ -1,31 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+
+        .middle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        #teaser {
+            width: 100%;
+            height:auto;
+        }
+        #teaser img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li a {
+            font-size: xx-large;
+            padding: 24px;
+            font-weight: 700;
+            margin: 50px;
+
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            font-weight: 700;
+            z-index: 99;
+        }
+
+
+        #quote {
+            font-size: x-large;
+            font-weight: bolder;
+            color: black;
+            border: hidden;
+        }
+
+        section {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 48px 24px 24px;
+            box-sizing: border-box;
+            transform: translateY(-48px);
+        }
+
+
+
+    </style>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type ="test/css" href= "../src/static/styleIndex.css"/>
     <title>Snoop Dogg -</title>
 </head>
-<body background="https://images4.alphacoders.com/939/939036.jpg"  alink="#017bf5" link="#000">
-<br />
-<h1 align="left">
-    <font face="Helvetica" size="7" >Willkommen zur "offiziellen" Snoop Dogg Fanpage</font>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    <font face="Lato" size="6" color="red">
-        <a href=templates/steckbrief.html>Steckbrief</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=templates/biography.html>Biografie</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=templates/pictures.html>Bilder</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=templates/music.html>Musik</a>&nbsp;&nbsp;&nbsp;&nbsp;
-    </font>
-</h1>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<body>
 
-<h2 align="left">
-    <font face="Lato" color= red size="12">
-        "Two in the mornin' and the partys still jumpin'
-        'Cause my momma ain't home" - Snoop Dogg
-    </font>
-</h2>
+<header class="middle">
+    <h1> Welcome to the official Snoop Dogg Website</h1>
+</header>
+
+<div id="teaser">
+    <figure>
+        <img
+                src="media/pictures/Wallpaper.jpg"
+                alt="Snopp Dogg am Mikrofon"
+        />
+        <figcaption class="middle" id="quote">
+            "Two in the mornin' and the partys still jumpin' 'Cause my momma ain't home" - Snoop Dogg
+        </figcaption>
+    </figure>
+</div>
+
+<br>
+
+<section class="references">
+    <nav>
+        <ul class="middle">
+            <li>
+                <a href="templates/steckbrief.html">Steckbrief</a>
+            </li>
+            <li>
+                <a href="templates/biography.html">Biografie</a>
+            </li>
+            <li>
+                <a href="templates/pictures.html">Bilder</a>
+            </li>
+            <li>
+                <a href="templates/music.html">Musik</a>
+            </li>
+        </ul>
+    </nav>
+</section>
+
+<footer>
+    <nav>
+        <ul class="middle">
+            <li>
+                <a
+                        href="https://gitty.informatik.hs-mannheim.de/web-lecture/team-07.git"> Source code on Github
+                </a>
+            </li>
+        </ul>
+    </nav>
+</footer>
 </body>
 </html>
