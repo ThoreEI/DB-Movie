@@ -3,21 +3,26 @@
 <head>
     <style>
 
-
         * {
             color: whitesmoke;
         }
 
-        header {
-            margin-bottom: 25%;
-        }
         body {
             padding: 0;
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: darkslateblue url("media/pictures/Wallpaper.jpg") no-repeat fixed center center;
-            background-size: 75%;
+            background-color: darkslateblue;
         }
+
+
+        .teaser {
+            width: 1920px;
+            height: 1080px;
+            border: hidden;
+            background: url("media/pictures/Wallpaper.jpg") no-repeat center center;
+            background-size: 100%;
+        }
+
 
         .middle {
             display: flex;
@@ -43,11 +48,9 @@
         }
 
         nav ul li a {
-            font-size: xx-large;
-            font-weight: 600;
-            margin: auto;
-            padding-top: 700px;
-            padding-right: 460px;
+            font-size: x-large;
+            font-weight: 500;
+            margin: 10px;
 
         }
 
@@ -75,6 +78,12 @@
 
 
 
+
+
+
+
+
+
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -85,54 +94,62 @@
 <body>
 
 <header class="middle">
-    <h1> Welcome to the official Snoop Dogg Website</h1>
+    <h1> Welcome to the "official" Snoop Dogg Website</h1>
+
 </header>
 
-<div class="right">
-    <nav>
-        <ul>
-            <li>
-                <p>
-                    <a href="templates/steckbrief.html">Steckbrief</a>
-                </p>
-            </li>
-            <li>
-                <p>
-                    <a href="templates/biography.html">Biografie</a>
-                </p>
-            </li>
+<nav>
+    <ul class="middle">
+        <li>
+            <p>
+                <a href="templates/steckbrief.html">Steckbrief</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a href="templates/biography.html">Biografie</a>
+            </p>
+        </li>
 
-            <li>
-                <p>
-                    <a href="templates/pictures.html">Bilder</a>
-                </p>
-            </li>
-            <li>
-                <p>
-                    <a href="templates/music.html">Musik</a>
-                </p>
-            </li>
-        </ul>
-    </nav>
+        <li>
+            <p>
+                <a href="templates/pictures.html">Bilder</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a href="templates/music.html">Musik</a>
+            </p>
+        </li>
+
+    </ul>
+</nav>
+
+<div class="middle">
+    <div class="teaser">
+
+    </div>
 </div>
-
-<br><br>
-
-<figure>
-    <figcaption class="middle" id="quote">
-        "Two in the mornin' and the partys still jumpin' 'Cause my momma ain't home" - Snoop Dogg
-    </figcaption>
-</figure>
-
 
 
 
 <footer>
+
+    <figure>
+        <figcaption class="middle" id="quote">
+            "Two in the mornin' and the partys still jumpin' 'Cause my momma ain't home" - Snoop Dogg
+        </figcaption>
+    </figure>
     <nav>
-        <ul class="left">
+        <ul class="middle">
             <li>
                 <a
                         href="https://gitty.informatik.hs-mannheim.de/web-lecture/team-07.git"> Source code on Github
+                </a>
+            </li>
+            <li>
+                <a
+                        href="https://gitty.informatik.hs-mannheim.de/web-lecture/team-07.git"> The official website
                 </a>
             </li>
         </ul>
