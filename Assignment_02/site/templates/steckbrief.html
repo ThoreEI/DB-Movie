@@ -6,6 +6,25 @@
 
 
         <style>
+            .middle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            table {
+                border-collapse: collapse;
+            }
+
+            th, td {
+                border: 2px solid black;
+            }
+
+            table.content {
+                table-layout: fixed;
+                width: 700px;
+            }
+
 
 
 
@@ -13,21 +32,21 @@
 
     </head>
     <body>
+    <h1 class="middle">Steckbrief</h1>
 
-        <h1>Steckbrief</h1>
 
-        <figure>
+        <figure class="middle">
             <img src="../media/pictures/sd1.jpg" alt="Snoop Dogg">
             <figcaption> I'm in it to win it and No Limit is my home (for life for life) - Snoop Dogg</figcaption>
         </figure>
 
-
         <br><br>
-
-        <main>
-            <h3>Snoop Dogg - Steckbrief</h3>
-            <table>
-                <tr><td>Name</td><td>Snoop Dogg</td></tr>
+    <h3 class="middle">Snoop Dogg - Steckbrief</h3>
+        <main class="middle">
+            <table class="content">
+                <tr>
+                    <td>Name</td><td>Snoop Dogg</td>
+                </tr>
                 <tr><td>Bürgerlicher Name</td><td>Calvin Cordazer Broadus Jr.</td></tr>
                 <tr><td>Beruf</td><td>Schauspieler, Rapper</td></tr>
                 <tr><td>Geburtstag</td><td>20.10.1971</td></tr>
