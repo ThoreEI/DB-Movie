@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+        * {
+            color: lightgrey;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: darkslateblue;
+        }
+
+
+        .teaser {
+            width: 1920px;
+            height: 1080px;
+            border: hidden;
+            background: url("media/pictures/Wallpaper.jpg") no-repeat center center;
+            background-size: 100%;
+        }
+
+
+        .middle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li a {
+            font-size: x-large;
+            font-weight: 500;
+            margin: 10px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            font-weight: 600;
+        }
+
+
+        #quote {
+            font-size: x-large;
+            font-weight: inherit;
+        }
+
+
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type ="test/css" href= "../src/static/styleIndex.css"/>
+    <title>Snoop Dogg -</title>
+</head>
+
+<body>
+
+<header class="middle">
+    <h1> Welcome to the "official" Snoop Dogg Website</h1>
+
+</header>
+
+<nav>
+    <ul class="middle">
+        <li>
+            <p>
+                <a href="templates/steckbrief.html">Steckbrief</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a href="templates/biography.html">Biografie</a>
+            </p>
+        </li>
+
+        <li>
+            <p>
+                <a href="templates/pictures.html">Bilder</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a href="templates/music.html">Musik</a>
+            </p>
+        </li>
+
+    </ul>
+</nav>
+
+<div class="middle">
+    <div class="teaser">
+    </div>
+</div>
+
+
+
+<footer>
+
+    <h2 class="middle" id="quote">
+        "Two in the mornin' and the partys still jumpin' 'Cause my momma ain't home" - Snoop Dogg
+    </h2>
+
+    <nav>
+        <ul class="middle">
+            <li>
+                <a
+                        href="https://gitty.informatik.hs-mannheim.de/web-lecture/team-07.git"> Source code on Github
+                </a>
+            </li>
+            <li>
+                <a
+                        href="https://snoopdogg.com/"> The official website
+                </a>
+            </li>
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>

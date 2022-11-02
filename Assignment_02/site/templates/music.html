@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Best of Snoop Dogg</title>
+
+    <style>
+
+        * {
+            background-color: darkslateblue;
+            color: lightgrey;
+
+        }
+
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: darkslateblue;
+        }
+
+        .middle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .media-resolution {
+            width: 800px;
+            height: 450px;
+        }
+
+        .grid-container {
+            display: grid;
+            gap: 10px;
+            grid-auto-rows: minmax(100px, auto);
+            grid-template-columns: auto auto;
+            margin-left: 12.5%;
+            margin-right: 12.5%;
+        }
+
+        .grid-item {
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li a {
+            font-size: x-large;
+            font-weight: 500;
+            margin: 10px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            font-weight: 600;
+            z-index: 99;
+        }
+
+        h1{
+            font-size: xxx-large;
+            font-weight: bolder;
+
+        }
+
+    </style>
+</head>
+<body>
+<h1 class="middle">Best Snoop Dogg Songs</h1>
+
+<nav>
+    <ul class="middle">
+        <li>
+            <p>
+                <a href="../index.html">Startseite</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a href="steckbrief.html">Steckbrief</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a href="biography.htmll">Biografie</a>
+            </p>
+        </li>
+
+        <li>
+            <p>
+                <a href="pictures.html">Bilder</a>
+            </p>
+        </li>
+
+
+    </ul>
+</nav>
+
+<div class="grid-container">
+    <div class="grid-item">
+        <figure>
+        <iframe class="media-resolution" src="https://www.youtube.com/embed/Y_WxELxb4qI"></iframe>
+            <figcaption>
+                Snoop Dogg - Gin & Juice
+            </figcaption>
+        </figure>
+    </div>
+    <div class="grid-item">
+        <figure>
+            <iframe class="media-resolution" src="https://www.youtube.com/embed/4eLRb5uZpe0"></iframe>
+            <figcaption>
+                Snoop Dogg - Me & my Homies
+            </figcaption>
+        </figure>
+    </div>
+    <div class="grid-item">
+        <figure>
+            <video  class="media-resolution" src="../media/video/snoop_song_1.mp4" controls loop poster="../media/pictures/nuthin_thumbnail.jpg"></video>
+            <figcaption>
+                Dr. Dre ft. Snoop Dogg - Nuthin' But A G Thang
+            </figcaption>
+        </figure>
+    </div>
+    <div class="grid-item">
+        <figure>
+            <video  class= "media-resolution" src="../media/video/snoop_song_2.mp4" controls loop poster="../media/pictures/nextepisode_thumbnail.jpg"></video>
+            <figcaption>
+                Dr. Dre - The Next Episode ft. Snoop Dogg, Kurupt, Nate Dogg
+            </figcaption>
+        </figure>
+    </div>
+
+</div>
+
+</body>
+</html>
