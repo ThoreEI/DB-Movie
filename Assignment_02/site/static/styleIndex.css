@@ -32,7 +32,7 @@ a:hover{
 
 .teaser {
     width: 820px;
-    height: 540px;
+    height: 500px;
     border: hidden;
     background: url(../media/pictures/Wallpaper.jpg) no-repeat center center;
     background-size: 100%;
@@ -43,6 +43,10 @@ a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+figcaption {
+    text-align: center;
 }
 
 
