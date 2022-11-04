@@ -1,3 +1,22 @@
+
+
+h1 {
+    color: lightgray;
+    font-size: 4em;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: darkslateblue;
+}
+
+img {
+    width: 1600px;
+    height: 800px;
+}
+
 a:visited {
     color: grey;
 }
@@ -9,21 +28,65 @@ a:hover{
     font-weight: bold;
 }
 
+
+
+
+
 .middle {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+}
+
+
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li a {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 10px;
+    color: lightgray;
+}
+
+nav {
+    position: sticky;
+    background-color: darkslateblue;
+    top: 0;
+    font-weight: 600;
+}
+
+
+#quote {
+    font-size: 1em;
+    font-weight: inherit;
 }
 
 table {
+    color: black;
+    background-color: white;
     border-collapse: collapse;
+}
+
+tr {
+    text-align: center;
 }
 
 th, td {
     border: 2px solid black;
+    font-size: 3em;
+    width: 800px;
+    height: 50px;
 }
 
 table.content {
     table-layout: auto;
+    margin: 10px;
+    column-width: 19200px;
+
 }
+
+
 
