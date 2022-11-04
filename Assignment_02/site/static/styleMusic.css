@@ -1,0 +1,73 @@
+* {
+    background-color: darkslateblue;
+    color: lightgrey;
+
+}
+
+
+
+a:visited {
+    color: grey;
+}
+a:active {
+    color: black;
+}
+
+a:hover{
+    font-weight: bold;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: darkslateblue;
+}
+
+.middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.media-resolution {
+    width: 800px;
+    height: 450px;
+}
+
+.grid-container {
+    display: grid;
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: auto auto;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+}
+
+.grid-item {
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li a {
+    font-size: 3em;
+    font-weight: 500;
+    margin: 10px;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    font-weight: 600;
+    z-index: 99;
+}
+
+h1{
+    font-size: 5em;
+    font-weight: bolder;
+
+}

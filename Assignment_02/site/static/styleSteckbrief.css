@@ -1,0 +1,29 @@
+a:visited {
+    color: grey;
+}
+a:active {
+    color: black;
+}
+
+a:hover{
+    font-weight: bold;
+}
+
+.middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 2px solid black;
+}
+
+table.content {
+    table-layout: auto;
+}
+
