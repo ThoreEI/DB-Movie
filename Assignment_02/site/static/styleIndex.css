@@ -14,6 +14,10 @@ body {
     background-color: darkslateblue;
 }
 
+a:link {
+    color: lightgray;
+}
+
 a:visited {
     color: grey;
 }

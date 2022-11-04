@@ -14,10 +14,14 @@ fieldset {
     width: 1000px;
     height: auto;
     text-align: justify;
+    justify-content: center;
     margin-right: 25%;
     margin-left: 25%;
 }
 
+a:link {
+    color: lightgrey;
+}
 a:visited {
     color: grey;
 }
@@ -46,13 +50,12 @@ legend {
 
 nav ul {
     list-style: none;
-    margin-bottom: 25px;
 }
 
 nav ul li a {
     font-size: 1.5em;
     font-weight: 500;
-    margin: 10px;
+    margin: 10px 10px 0;
 }
 
 nav {

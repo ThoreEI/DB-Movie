@@ -1,11 +1,14 @@
 * {
     background-color: darkslateblue;
     color: lightgrey;
-
 }
 
 figcaption {
     font-size: 0.7em;
+}
+
+a:link {
+    color: lightgrey;
 }
 
 a:visited {
@@ -66,7 +69,7 @@ nav {
     font-weight: 600;
 }
 
-h1{
+h1 {
     font-size: 2em;
     font-weight: bolder;
 

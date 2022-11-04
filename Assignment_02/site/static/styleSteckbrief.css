@@ -2,7 +2,18 @@
 
 h1 {
     color: lightgray;
-    font-size: 4em;
+    font-size: 2em;
+}
+
+img {
+    width: 600px;
+    height: 300px;
+    border: solid 3px black;
+    }
+
+figure figcaption {
+    color: lightgray;
+    font-size: 1em;
 }
 
 body {
@@ -12,9 +23,9 @@ body {
     background-color: darkslateblue;
 }
 
-img {
-    width: 1600px;
-    height: 800px;
+
+a:link {
+    color: lightgray;
 }
 
 a:visited {
@@ -27,8 +38,6 @@ a:active {
 a:hover{
     font-weight: bold;
 }
-
-
 
 
 
@@ -47,7 +56,8 @@ nav ul {
 nav ul li a {
     font-size: 1.5em;
     font-weight: 500;
-    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     color: lightgray;
 }
 
@@ -66,7 +76,7 @@ nav {
 
 table {
     color: black;
-    background-color: white;
+    background-color: lightgray;
     border-collapse: collapse;
 }
 
@@ -76,15 +86,14 @@ tr {
 
 th, td {
     border: 2px solid black;
-    font-size: 3em;
-    width: 800px;
-    height: 50px;
+    font-size: 1em;
+    width: 300px;
+    height: auto;
 }
 
 table.content {
     table-layout: auto;
     margin: 10px;
-    column-width: 19200px;
 
 }
 
