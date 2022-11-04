@@ -4,7 +4,9 @@
 
 }
 
-
+figcaption {
+    font-size: 0.7em;
+}
 
 a:visited {
     color: grey;
@@ -30,26 +32,26 @@ body{
     align-items: center;
 }
 .media-resolution {
-    width: 800px;
-    height: 450px;
+    width: 600px;
+    height: 350px;
 }
 
 .grid-container {
     display: grid;
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(100px, 500px);
     grid-template-columns: auto auto;
     margin-left: 20%;
     margin-right: 20%;
 }
 
 .grid-item {
-    padding: 20px;
     font-size: 30px;
     text-align: center;
 }
 
 nav ul {
     list-style: none;
+    margin-bottom: 3.5em;
 }
 
 nav ul li a {
@@ -62,7 +64,6 @@ nav {
     position: sticky;
     top: 0;
     font-weight: 600;
-    z-index: 99;
 }
 
 h1{
