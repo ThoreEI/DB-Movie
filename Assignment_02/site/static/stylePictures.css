@@ -1,48 +1,17 @@
+@import "styleIndex.css";
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: darkslateblue;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-nav ul {
-    list-style: none;
-}
-
-nav ul li a {
-    font-size: 1.5em;
-    font-weight: 500;
-    margin: 10px;
-}
-
-nav {
-    position: sticky;
-    background-color: darkslateblue;
-    top: 0;
-    font-weight: 600;
-}
-
-a:link {
-    color: lightgray;
-}
-
-a:visited {
-    color: grey;
-}
-a:active {
-    color: black;
-}
-
-a:hover{
-    font-weight: bold;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
 }
 
 .middle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-bottom: 10px;
 }
 
 .row {
@@ -51,7 +20,6 @@ a:hover{
     padding: 0 4px;
 }
 
-/* Create four equal columns that sits next to each other */
 .column {
     flex: 25%;
     max-width: 25%;
@@ -64,7 +32,7 @@ a:hover{
     width: 100%;
 }
 
-/* Responsive layout - makes a two column-layout instead of four columns */
+/* two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
     .column {
         flex: 50%;
@@ -72,14 +40,10 @@ a:hover{
     }
 }
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+/* two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
     .column {
         flex: 100%;
         max-width: 100%;
     }
-}
-
-img {
-    width: 100%;
 }

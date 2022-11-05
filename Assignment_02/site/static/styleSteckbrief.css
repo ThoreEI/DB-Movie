@@ -1,78 +1,15 @@
-
-
-h1 {
-    color: lightgray;
-    font-size: 2em;
-}
-
+@import "styleIndex.css";
 img {
     width: 600px;
     height: 300px;
     border: solid 3px black;
-    }
-
-figure figcaption {
-    color: lightgray;
-    font-size: 1em;
 }
 
-body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: darkslateblue;
+h1 {
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
-
-a:link {
-    color: lightgray;
-}
-
-a:visited {
-    color: grey;
-}
-a:active {
-    color: black;
-}
-
-a:hover{
-    font-weight: bold;
-}
-
-
-
-.middle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-nav ul {
-    list-style: none;
-}
-
-nav ul li a {
-    font-size: 1.5em;
-    font-weight: 500;
-    margin-left: 10px;
-    margin-right: 10px;
-    color: lightgray;
-}
-
-nav {
-    position: sticky;
-    background-color: darkslateblue;
-    top: 0;
-    font-weight: 600;
-}
-
-
-#quote {
-    font-size: 1em;
-    font-weight: inherit;
-}
 
 table {
     color: black;
@@ -94,7 +31,6 @@ th, td {
 table.content {
     table-layout: auto;
     margin: 10px;
-
 }
 
 

@@ -1,11 +1,8 @@
+@import "styleIndex.css";
 
 fieldset legend h1 {
     margin: 0;
-}
-
-body {
-    background-color: darkslateblue;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
 }
 
 fieldset {
@@ -17,50 +14,10 @@ fieldset {
     justify-content: center;
     margin-right: 25%;
     margin-left: 25%;
-}
-
-a:link {
-    color: lightgrey;
-}
-a:visited {
-    color: grey;
-}
-a:active {
-    color: black;
-}
-
-a:hover{
-    font-weight: bold;
-}
-
-.middle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
     margin-top: 25px;
 }
 
 legend {
     margin-left: auto;
     margin-right: auto;
-    width: auto;
-
-}
-
-nav ul {
-    list-style: none;
-}
-
-nav ul li a {
-    font-size: 1.5em;
-    font-weight: 500;
-    margin: 10px;
-}
-
-nav {
-    position: sticky;
-    top: 0;
-    font-weight: 600;
-    background-color: darkslateblue;
 }

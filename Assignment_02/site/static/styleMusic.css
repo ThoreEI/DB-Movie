@@ -1,39 +1,12 @@
+@import "styleIndex.css";
 * {
-    background-color: darkslateblue;
-    color: lightgrey;
+    color: lightgray;
 }
 
 figcaption {
     font-size: 0.7em;
 }
 
-a:link {
-    color: lightgrey;
-}
-
-a:visited {
-    color: grey;
-}
-a:active {
-    color: black;
-}
-
-a:hover{
-    font-weight: bold;
-}
-
-body{
-    padding: 0;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: darkslateblue;
-}
-
-.middle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .media-resolution {
     width: 600px;
     height: 350px;
@@ -52,25 +25,8 @@ body{
     text-align: center;
 }
 
-nav ul {
-    list-style: none;
-    margin-bottom: 3.5em;
-}
-
-nav ul li a {
-    font-size: 1.5em;
-    font-weight: 500;
-    margin: 10px;
-}
-
-nav {
-    position: sticky;
-    top: 0;
-    font-weight: 600;
-}
 
 h1 {
     font-size: 2em;
     font-weight: bolder;
-
 }
