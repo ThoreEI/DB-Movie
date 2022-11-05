@@ -1,30 +1,9 @@
-h1 {
-    font-size: 2em;
-    color: lightgray;
-}
+@import "style.css";
 
-body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: darkslateblue;
+#quote {
+    font-size: 1em;
+    font-weight: inherit;
 }
-
-a:link {
-    color: lightgray;
-}
-
-a:visited {
-    color: grey;
-}
-a:active {
-    color: black;
-}
-
-a:hover{
-    font-weight: bold;
-}
-
 
 .teaser {
     width: 820px;
@@ -32,43 +11,4 @@ a:hover{
     border: hidden;
     background: url(../media/pictures/Wallpaper.jpg) no-repeat center center;
     background-size: 100%;
-}
-
-
-.middle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-figcaption {
-    text-align: center;
-    color: lightgray;
-    font-size: 1em;
-}
-
-
-
-nav ul {
-    list-style: none;
-}
-
-nav ul li a {
-    font-size: 1.5em;
-    font-weight: 500;
-    margin: 10px 10px;
-
-}
-
-nav {
-    position: sticky;
-    background-color: darkslateblue;
-    top: 0;
-    font-weight: 600;
-}
-
-
-#quote {
-    font-size: 1em;
-    font-weight: inherit;
 }
