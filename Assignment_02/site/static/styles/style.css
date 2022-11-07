@@ -11,7 +11,7 @@ body {
 }
 
 a:link {
-    color: black;
+    color: lightgray;
 }
 
 a:visited {
@@ -19,10 +19,6 @@ a:visited {
 }
 a:active {
     color: black;
-}
-
-a:hover{
-    font-weight: bold;
 }
 
 
@@ -37,7 +33,6 @@ figcaption {
     color: lightgray;
     font-size: 1em;
 }
-
 
 
 nav ul {

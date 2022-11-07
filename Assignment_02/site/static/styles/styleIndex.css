@@ -1,14 +1,18 @@
 @import "style.css";
 
-#quote {
-    font-size: 1em;
-    font-weight: inherit;
+footer nav ul li a {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .teaser {
-    width: 820px;
-    height: 500px;
+    width: 1200px;
+    height: 650px;
     border: hidden;
     background: url(../../media/pictures/Wallpaper.jpg) no-repeat center center;
     background-size: 100%;
+}
+
+figcaption {
+    font-size: 1.5em;
 }
