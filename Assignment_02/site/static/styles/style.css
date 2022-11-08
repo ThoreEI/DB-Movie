@@ -35,21 +35,3 @@ figcaption {
 }
 
 
-nav ul {
-    list-style: none;
-}
-
-nav ul li a {
-    font-size: 1.5em;
-    font-weight: 500;
-    margin: 10px 10px;
-}
-
-nav {
-    position: sticky;
-    background-color: darkslateblue;
-    top: 0;
-    font-weight: 600;
-}
-
-

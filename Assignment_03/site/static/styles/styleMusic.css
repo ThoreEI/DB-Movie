@@ -1,0 +1,32 @@
+@import "../styles/style.css";
+* {
+    color: lightgray;
+}
+
+figcaption {
+    font-size: 0.7em;
+}
+
+.media-resolution {
+    width: 600px;
+    height: 350px;
+}
+
+.grid-container {
+    display: grid;
+    grid-auto-rows: minmax(100px, 500px);
+    grid-template-columns: auto auto;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.grid-item {
+    font-size: 30px;
+    text-align: center;
+}
+
+
+h1 {
+    font-size: 2em;
+    font-weight: bolder;
+}
