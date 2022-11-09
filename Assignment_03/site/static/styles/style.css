@@ -10,6 +10,10 @@ body {
     background-color: darkslateblue !important;
 }
 
+.background{
+    background-color: darkslateblue !important;
+}
+
 a:link {
     color: lightgray;
 }
@@ -28,28 +32,7 @@ a:active {
     align-items: center;
 }
 
-figcaption {
-    text-align: center;
-    color: lightgray;
-    font-size: 1em;
+.quote{
+    font-size: 1.5em !important;
 }
-
-
-nav ul {
-    list-style: none;
-}
-
-nav ul li a {
-    font-size: 1.5em;
-    font-weight: 500;
-    margin: 10px 10px;
-}
-
-nav {
-    position: sticky;
-    background-color: darkslateblue;
-    top: 0;
-    font-weight: 600;
-}
-
 
