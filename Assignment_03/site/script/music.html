@@ -2,70 +2,77 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Best of Snoop Dogg</title>
+
     <link rel="stylesheet" href="../static/styles/styleMusic.css">
+    <link href="../static/styles/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-<header class="middle">
-    <h1>Best Snoop Dogg Songs</h1>
-</header>
-
-<nav>
-    <ul class="middle">
-        <li>
-                <a href="../index.html">Startseite</a>
-        </li>
-        <li>
-                <a href="steckbrief.html">Steckbrief</a>
-        </li>
-        <li>
-                <a href="biography.html">Biografie</a>
-        </li>
-
-        <li>
-                <a href="pictures.html">Bilder</a>
-        </li>
+<h1 class="text-center text-light">Best Snoop Dogg Songs</h1>
 
 
-    </ul>
-</nav>
-<div class="middle">
-    <div class="grid-container">
-        <div class="grid-item">
+<div class="d-flex justify-content-center">
+    <nav class="navbar navbar-expand-xxl navbar-light">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="../index.html">Startseite</a>
+            <a class="nav-item nav-link" href="biography.html">Biografie</a>
+            <a class="nav-item nav-link" href="pictures.html">Bilder</a>
+            <a class="nav-item nav-link" href="music.html">Musik</a>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container text-center mt-5">
+    <div class="row">
+
+        <div class="col-md">
             <figure>
                 <iframe class="media-resolution" src="https://www.youtube.com/embed/Y_WxELxb4qI"></iframe>
-                <figcaption>
+                <figcaption class="fs-5">
                     Snoop Dogg - Gin & Juice
                 </figcaption>
             </figure>
         </div>
-        <div class="grid-item">
+
+        <div class="col-md">
             <figure>
                 <iframe class="media-resolution" src="https://www.youtube.com/embed/4eLRb5uZpe0"></iframe>
-                <figcaption>
+                <figcaption class="fs-5">
                     Snoop Dogg - Me & my Homies
                 </figcaption>
             </figure>
         </div>
-        <div class="grid-item">
+
+    </div>
+
+
+    <div class="justify-content-center row">
+        <div class="col-md">
             <figure>
-                <video class="media-resolution" src="../media/video/snoop_song_1.mp4" controls loop poster="../media/pictures/nuthin_thumbnail.jpg"></video>
-                <figcaption>
+                <video class="media-resolution" src="../media/video/snoop_song_1.mp4" controls loop
+                       poster="../media/pictures/nuthin_thumbnail.jpg"></video>
+                <figcaption class="fs-5">
                     Dr. Dre ft. Snoop Dogg - Nuthin' But A G Thang
                 </figcaption>
             </figure>
         </div>
-        <div class="grid-item">
+
+        <div class="col-md">
             <figure>
-                <video class= "media-resolution" src="../media/video/snoop_song_2.mp4" controls loop poster="../media/pictures/nextepisode_thumbnail.jpg"></video>
-                <figcaption>
+                <video class="media-resolution" src="../media/video/snoop_song_2.mp4" controls loop
+                       poster="../media/pictures/nextepisode_thumbnail.jpg"></video>
+                <figcaption class="fs-5">
                     Dr. Dre - The Next Episode ft. Snoop Dogg, Kurupt, Nate Dogg
                 </figcaption>
             </figure>
         </div>
-        </div>
+    </div>
 </div>
+
 
 </body>
 </html>

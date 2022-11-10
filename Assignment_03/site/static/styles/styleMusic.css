@@ -15,7 +15,6 @@ figcaption {
 .grid-container {
     display: grid;
     grid-auto-rows: minmax(100px, 500px);
-    grid-template-columns: auto auto;
     margin-left: 20%;
     margin-right: 20%;
 }
@@ -29,4 +28,10 @@ figcaption {
 h1 {
     font-size: 2em;
     font-weight: bolder;
+}
+
+@media screen  and (max-width: 600px){
+
+
+    
 }
