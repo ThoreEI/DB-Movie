@@ -1,48 +1,13 @@
-<html lang="de">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Filmdatenbank</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/indexStyle.css" rel="stylesheet">
-
-    <script src="script/table.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+    <script defer src="script/script.js" ></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
 </head>
-<body onload="create()">
-
-<h1 class="text-center text-dark">Filmdatenbank</h1>
-
-
-<div class="container justify-content-center mt-5">
-    <table class="table border border-2 border-dark table-bordered" id="filmtable">
-
-        <thead>
-        <tr>
-            <th scope="col">Titel</th>
-            <th scope="col">Regisseur</th>
-            <th scope="col">Jahr</th>
-            <th scope="col">Spielzeit</th>
-            <th scope="col">FSK</th>
-            <th scope="col"> </th>
-        </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td> <input type="text" class="form-control" placeholder="Titel" aria-label="Titel" aria-describedby="basic-addon1"> </td>
-                <td> <input type="text" class="form-control" placeholder="Regisseur" aria-label="Regisseur" aria-describedby="basic-addon1"> </td>
-                <td> <input type="text" class="form-control" placeholder="Jahr" aria-label="Jahr" aria-describedby="basic-addon1"> </td>
-                <td> <input type="text" class="form-control" placeholder="Spielzeit" aria-label="Spielzeit" aria-describedby="basic-addon1"> </td>
-                <td> <input type="text" class="form-control" placeholder="FSK" aria-label="FSK" aria-describedby="basic-addon1"> </td>
-            </tr>
-        </tbody>
-
-    </table>
-
-</div>
-
+<body onload="createAndRenderMovieTable()">
+<h1 class="text-center text-dark"> Movies </h1>
+<table class ="container justify-content-center table border border-2 border-dark table-bordered" id="movie-table"></table>
 </body>
-
 </html>

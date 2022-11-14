@@ -1,36 +1,45 @@
-function createTable(tableData) {
-    var table = document.getElementById('filmtable');
-    var tableBody = document.createElement('tbody');
+const tableEntries = [["Pulp Fiction", "Quentin Tarantino", "1994", "154", "16", ""],
+    ["Inglorious Bastards", "Quentin Tarantino", "2009", "153", "16", ""],
+    ["Reservoir Dogs", "Quentin Tarantino", "1992", "99", "18", ""],
+    ["Blade Runner", "Ridley Scott", "1982", "117", "16", ""]];
 
-    tableData.forEach(function(rowData) {
-        var row = document.createElement('tr');
+const tableHeadInformation = ["Title", "Regisseur", "Jahr", "Spielzeit", "FSK"]
 
-        rowData.forEach(function(cellData) {
-            var cell = document.createElement('td');
-            cell.appendChild(document.createTextNode(cellData));
-            row.appendChild(cell);
 
-            // check if the cell is the last one
-            if (cellData === "") {
-                // add the button
-                var button = document.createElement("button");
-                button.innerHTML = "X";
-                button.setAttribute("class", "delete");
-                button.setAttribute("onclick", "deleteRow(this)");
-                cell.appendChild(button);
-            }
-        });
+function createAndRenderMovieTable() {
+    const table = document.getElementById("movie-table")
+    const tableHead = document.createElement("thead");
+    const tableHeadRow = document.createElement("tr")
 
-        tableBody.appendChild(row);
+    tableHeadInformation.forEach(function createHead(headData) {
+        const tableHeadCell = document.createElement("th")
+        tableHeadCell.appendChild(document.createTextNode(headData))
+        tableHeadRow.appendChild(tableHeadCell)
+        tableHead.appendChild(tableHeadRow)
     });
 
+    const tableBody = document.createElement("tbody");
+    tableEntries.forEach(function createRow (rowData) {
+        const tableBodyRow = document.createElement("tr");
+        rowData.forEach(function createCell (cellData) {
+            const tableBodyCell = document.createElement("td")
+            tableBodyCell.appendChild(document.createTextNode(cellData))
+            tableBodyRow.appendChild(tableBodyCell)
+
+            if (cellData === "") {
+                const addButton = document.createElement("button");
+                addButton.innerHTML = "Add"
+                addButton.setAttribute("class", "delete");
+                addButton.setAttribute("onclick", "deleteRow(this)")
+                tableBodyCell.appendChild(addButton);
+            }
+        });
+        tableBody.appendChild(tableBodyRow);
+    });
+
+    table.appendChild(tableHead)
     table.appendChild(tableBody);
+
     document.body.appendChild(table);
 }
 
-function create(){
-    createTable([["Pulp Fiction", "Quentin Tarantino", "1994", "154", "16", ""],
-        ["Inglourious Basterds", "Quentin Tarantino", "2009", "153", "16", ""],
-        ["Reservoir Dogs", "Quentin Tarantino", "1992", "99", "18", ""],
-        ["Blade Runner", "Ridley Scott", "1982", "117", "16", ""]]);
-}
