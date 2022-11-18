@@ -7,27 +7,27 @@ const headings = ["Titel", "Regisseur", "Jahr", "Spielzeit", "FSK", ""]
 
 
 let entries = {
-    "a": {
-        "producer": "A",
-        "year": "100",
+    "Pulp_Fiction": {
+        "producer": "Quentin Tarantino",
+        "year": "1994",
         "playtime": "154",
         "fsk": "16"
     },
-    "b": {
-        "producer": "B",
-        "year": "200",
+    "Inglorious_Bastards": {
+        "producer": "Quentin Tarantino",
+        "year": "2009",
         "playtime": "153",
         "fsk": "16"
     },
-    "c": {
-        "producer": "C",
-        "year": "300",
+    "Reservoir_Dogs": {
+        "producer": "Quentin Tarantino",
+        "year": "1992",
         "playtime": "99",
         "fsk": "18"
     },
-    "d": {
-        "producer": "D",
-        "year": "400",
+    "Blade_Runner": {
+        "producer": "Ridley Scott",
+        "year": "1982",
         "playtime": "117",
         "fsk": "16"
     }
