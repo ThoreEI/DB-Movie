@@ -141,8 +141,8 @@ function sortTable(n) {
         rows = table.rows;
         for (index = 2; index < (rows.length - 1); index++) {
             shouldSwitch = false;
-            x = rows[index].getElementsByTagName("TD")[n];
-            y = rows[index + 1].getElementsByTagName("TD")[n];
+            x = rows[index].getElementsByTagName("td")[n];
+            y = rows[index + 1].getElementsByTagName("td")[n];
             if (n > 1) {
                 if (direction === "asc") {
                     if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
