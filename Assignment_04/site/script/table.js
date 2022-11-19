@@ -1,11 +1,4 @@
 const table = document.getElementById("movie-table")
-// const entries = [["Pulp Fiction", "Quentin Tarantino", "1994", "154", "16", ""],
-//     ["Inglorious Bastards", "Quentin Tarantino", "2009", "153", "16", ""],
-//     ["Reservoir Dogs", "Quentin Tarantino", "1992", "99", "18", ""],
-//     ["Blade Runner", "Ridley Scott", "1982", "117", "16", ""]];
-const headings = ["Titel", "Regisseur", "Jahr", "Spielzeit", "FSK", ""]
-
-
 let entries = {
     "Pulp_Fiction": {
         "producer": "Quentin Tarantino",
@@ -34,10 +27,8 @@ let entries = {
 }
 
 
-buttonPressed();
-
 function init() {
-    // get the keyset of the Json object entries
+    // get the key set of the Json object entries
     let keys = Object.keys(entries);
     // create a new array with the values of the Json object entries
     let newEntries = [];
@@ -56,8 +47,33 @@ function init() {
     createMovieTable();
 }
 
+function createMovieTable() {
+    const tableBody = document.getElementById("tableBody");
+    entries.forEach(function createRow(rowData) {
+        const rowBody = document.createElement("tr");
+        rowData.forEach(function createCell(cellData) {
+            let cell = document.createElement("td");
+            cell.appendChild(document.createTextNode(cellData));
+            tableBody.appendChild(rowBody).appendChild(cell);
 
-// function that gets the input from the form and adds it to the table when pressing enter
+            if (cellData === "") {
+                let closeButton = document.createElement("button");
+                closeButton.innerHTML = "X";
+                closeButton.setAttribute("id", "close");
+                closeButton.addEventListener("click", function () {
+                    this.parentElement.parentElement.style.display = 'none';
+                });
+                closeButton.name = "X"
+                cell.appendChild(closeButton)
+            }
+        });
+    });
+
+    table.appendChild(tableBody);
+    document.table.appendChild(table);
+}
+
+
 function addMovie() {
     let movieName = document.getElementById("inputTitel").value;
     let movieProducer = document.getElementById("inputProducer").value;
@@ -86,7 +102,6 @@ function addMovie() {
             closeButton.addEventListener("click", function () {
                 this.parentElement.parentElement.style.display = 'none';
             });
-            closeButton.name = "X"
             cell.appendChild(closeButton)
         }
     });
@@ -95,6 +110,8 @@ function addMovie() {
     document.table.appendChild(table);
 }
 
+
+buttonPressed();
 function buttonPressed() {
     document.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
@@ -113,7 +130,7 @@ function sortTable(n) {
     while (switching) {
         //start by saying: no switching is done:
         switching = false;
-        rows = table.getElementsByTagName("TR");
+        rows = table.getElementsByTagName("tr");
         /*Loop through all table rows (except the
         first, which contains table headers):*/
         for (i = 2; i < (rows.length - 1); i++) {
@@ -121,8 +138,8 @@ function sortTable(n) {
             shouldSwitch = false;
             /*Get the two elements you want to compare,
             one from current row and one from the next:*/
-            x = rows[i].getElementsByTagName("TD")[n];
-            y = rows[i + 1].getElementsByTagName("TD")[n];
+            x = rows[i].getElementsByTagName("td")[n];
+            y = rows[i + 1].getElementsByTagName("td")[n];
             /*check if the two rows should switch place,
             based on the direction, asc or desc:*/
             if(n === "0") {
@@ -174,30 +191,3 @@ function sortTable(n) {
 }
 
 
-function createMovieTable() {
-
-    const tableBody = document.getElementById("tableBody");
-    entries.forEach(function createRow(rowData) {
-        const rowBody = document.createElement("tr");
-        rowData.forEach(function createCell(cellData) {
-            let cell = document.createElement("td");
-            cell.appendChild(document.createTextNode(cellData));
-            tableBody.appendChild(rowBody).appendChild(cell);
-
-
-            if (cellData === "") {
-                let closeButton = document.createElement("button");
-                closeButton.innerHTML = "X";
-                closeButton.setAttribute("id", "close");
-                closeButton.addEventListener("click", function () {
-                    this.parentElement.parentElement.style.display = 'none';
-                });
-                closeButton.name = "X"
-                cell.appendChild(closeButton)
-            }
-        });
-    });
-
-    table.appendChild(tableBody);
-    document.table.appendChild(table);
-}
