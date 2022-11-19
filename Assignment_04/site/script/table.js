@@ -32,7 +32,7 @@ function init() {
     // get the key set of the Json object entries
     let keys = Object.keys(entries);
     // create a new array with the values of the Json object entries
-    let newEntries = [];
+    let tempEntries = [];
     keys.forEach(function (key) {
         let entry = [];
         entry.push(key.replace("_", " "));
@@ -41,9 +41,9 @@ function init() {
         entry.push(entries[key]["playtime"]);
         entry.push(entries[key]["fsk"]);
         entry.push("");
-        newEntries.push(entry);
+        tempEntries.push(entry);
     });
-    entries = newEntries;
+    entries = tempEntries;
     createMovieTable();
 }
 
