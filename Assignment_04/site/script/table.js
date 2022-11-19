@@ -133,38 +133,36 @@ function buttonPressed() {
 }
 
 function sortTable(n) {
-    let rows, switching, i, x, y, shouldSwitch, dir, switchCount = 0;
+    let rows, switching, index, x, y, shouldSwitch, direction, switchCount = 0;
     switching = true;
-    dir = "asc";
+    direction = "asc";
     while (switching) {
         switching = false;
         rows = table.rows;
-        for (i = 2; i < (rows.length - 1); i++) {
+        for (index = 2; index < (rows.length - 1); index++) {
             shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[n];
-            y = rows[i + 1].getElementsByTagName("TD")[n];
+            x = rows[index].getElementsByTagName("TD")[n];
+            y = rows[index + 1].getElementsByTagName("TD")[n];
             if (n > 1) {
-                if (dir === "asc") {
+                if (direction === "asc") {
                     if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
-                        // If so, mark as a switch and break the loop:
                         shouldSwitch = true;
                         break;
                     }
-                } else if (dir === "desc") {
+                } else if (direction === "desc") {
                     if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())) {
-                        // If so, mark as a switch and break the loop:
                         shouldSwitch = true;
                         break;
                     }
                 }
             }
             else {
-                if (dir === "asc") {
+                if (direction === "asc") {
                     if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                         shouldSwitch = true;
                         break;
                     }
-                } else if (dir === "desc") {
+                } else if (direction === "desc") {
                     if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
                         shouldSwitch = true;
                         break;
@@ -174,12 +172,12 @@ function sortTable(n) {
         }
 
         if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            rows[index].parentNode.insertBefore(rows[index + 1], rows[index]);
             switching = true;
             switchCount++;
         } else {
-            if (switchCount === 0 && dir === "asc") {
-                dir = "desc";
+            if (switchCount === 0 && direction === "asc") {
+                direction = "desc";
                 switching = true;
             }
         }
