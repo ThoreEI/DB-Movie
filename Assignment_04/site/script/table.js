@@ -99,11 +99,7 @@ function addMovie() {
         return;
     }
 
-
-
-
     let newEntry = [title, producer, year, playtime, fsk, ""];
-
     const tableBody = document.getElementById("tableBody");
     const rowBody = document.createElement("tr");
     newEntry.forEach(function createCell(cellData) {
@@ -127,8 +123,6 @@ function addCloseButton(cell) {
     cell.appendChild(closeButton)
 }
 
-
-
 buttonPressed();
 function buttonPressed() {
     document.addEventListener("keypress", function (event) {
@@ -136,38 +130,27 @@ function buttonPressed() {
             addMovie();
         }
     });
-
 }
+
 function sortTable(n) {
-    var rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    let rows, switching, i, x, y, shouldSwitch, dir, switchCount = 0;
     switching = true;
-    // Set the sorting direction to ascending:
     dir = "asc";
-    /* Make a loop that will continue until
-    no switching has been done: */
     while (switching) {
-        // Start by saying: no switching is done:
         switching = false;
         rows = table.rows;
-        /* Loop through all table rows (except the
-        first, which contains table headers): */
         for (i = 2; i < (rows.length - 1); i++) {
-            // Start by saying there should be no switching:
             shouldSwitch = false;
-            /* Get the two elements you want to compare,
-            one from current row and one from the next: */
             x = rows[i].getElementsByTagName("TD")[n];
             y = rows[i + 1].getElementsByTagName("TD")[n];
-            /* Check if the two rows should switch place,
-            based on the direction, asc or desc: */
             if (n > 1) {
-                if (dir == "asc") {
+                if (dir === "asc") {
                     if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
                         // If so, mark as a switch and break the loop:
                         shouldSwitch = true;
                         break;
                     }
-                } else if (dir == "desc") {
+                } else if (dir === "desc") {
                     if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())) {
                         // If so, mark as a switch and break the loop:
                         shouldSwitch = true;
@@ -176,15 +159,13 @@ function sortTable(n) {
                 }
             }
             else {
-                if (dir == "asc") {
+                if (dir === "asc") {
                     if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        // If so, mark as a switch and break the loop:
                         shouldSwitch = true;
                         break;
                     }
-                } else if (dir == "desc") {
+                } else if (dir === "desc") {
                     if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        // If so, mark as a switch and break the loop:
                         shouldSwitch = true;
                         break;
                     }
@@ -193,16 +174,11 @@ function sortTable(n) {
         }
 
         if (shouldSwitch) {
-            /* If a switch has been marked, make the switch
-            and mark that a switch has been done: */
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             switching = true;
-            // Each time a switch is done, increase this count by 1:
-            switchcount++;
+            switchCount++;
         } else {
-            /* If no switching has been done AND the direction is "asc",
-            set the direction to "desc" and run the while loop again. */
-            if (switchcount == 0 && dir == "asc") {
+            if (switchCount === 0 && dir === "asc") {
                 dir = "desc";
                 switching = true;
             }
