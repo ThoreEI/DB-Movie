@@ -1,4 +1,5 @@
 const table = document.getElementById("movie-table")
+const tableBody = document.getElementById("tableBody");
 let entries = {
     "Pulp_Fiction": {
         "producer": "Quentin Tarantino",
@@ -41,37 +42,28 @@ function init() {
         entry.push(entries[key]["fsk"]);
         entry.push("");
         newEntries.push(entry);
-
     });
     entries = newEntries;
     createMovieTable();
 }
 
 function createMovieTable() {
-    const tableBody = document.getElementById("tableBody");
     entries.forEach(function createRow(rowData) {
         const rowBody = document.createElement("tr");
         rowData.forEach(function createCell(cellData) {
             let cell = document.createElement("td");
             cell.appendChild(document.createTextNode(cellData));
             tableBody.appendChild(rowBody).appendChild(cell);
-
-            if (cellData === "") {
-                let closeButton = document.createElement("button");
-                closeButton.innerHTML = "X";
-                closeButton.setAttribute("id", "close");
-                closeButton.addEventListener("click", function () {
-                    this.parentElement.parentElement.style.display = 'none';
-                });
-                closeButton.name = "X"
-                cell.appendChild(closeButton)
-            }
+            if (cellData === "")
+                addCloseButton(cell);
         });
     });
 
     table.appendChild(tableBody);
     document.table.appendChild(table);
 }
+
+
 
 
 function addMovie() {
@@ -94,21 +86,23 @@ function addMovie() {
         const cell = document.createElement("td");
         cell.appendChild(document.createTextNode(cellData));
         rowBody.appendChild(cell);
-
-        if (cellData === "") {
-            let closeButton = document.createElement("button");
-            closeButton.innerHTML = "X";
-            closeButton.setAttribute("id", "close");
-            closeButton.addEventListener("click", function () {
-                this.parentElement.parentElement.style.display = 'none';
-            });
-            cell.appendChild(closeButton)
-        }
+        if (cellData === "")
+            addCloseButton(cell);
     });
-
     tableBody.appendChild(rowBody);
     document.table.appendChild(table);
 }
+
+function addCloseButton(cell) {
+    let closeButton = document.createElement("button");
+    closeButton.innerHTML = "X";
+    closeButton.setAttribute("id", "close");
+    closeButton.addEventListener("click", function () {
+        this.parentElement.parentElement.style.display = 'none';
+    });
+    cell.appendChild(closeButton)
+}
+
 
 
 buttonPressed();
@@ -189,5 +183,3 @@ function sortTable(n) {
         }
     }
 }
-
-
