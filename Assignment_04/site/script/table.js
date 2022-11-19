@@ -63,22 +63,46 @@ function createMovieTable() {
     document.table.appendChild(table);
 }
 
-
-
-
 function addMovie() {
-    let movieName = document.getElementById("inputTitel").value;
-    let movieProducer = document.getElementById("inputProducer").value;
-    let movieYear = document.getElementById("inputYear").value;
-    let moviePlaytime = document.getElementById("inputPlaytime").value;
-    let movieFsk = document.getElementById("inputFSK").value;
+    let title = document.getElementById("inputTitle").value;
+    let producer = document.getElementById("inputProducer").value;
+    let year = document.getElementById("inputYear").value;
+    let playtime = document.getElementById("inputPlaytime").value;
+    let fsk = document.getElementById("inputFSK").value;
 
-    if (movieName === "" || movieProducer === "" || movieYear === "" || moviePlaytime === "" || movieFsk === "") {
-        alert("Bitte alle Felder ausfüllen!");
+    let digits = new RegExp(/\d/)
+    let letters = new RegExp(/\D/)
+    let validYear = new RegExp(/\d{4}/)
+
+    if (title === "" || producer === "" || year === "" || playtime === "" || fsk === "") {
+        alert("Please fill out all fields!");
         return;
     }
 
-    let newEntry = [movieName, movieProducer, movieYear, moviePlaytime, movieFsk, ""];
+    if (producer.match(digits)) {
+        alert("Invalid input for producer.")
+        return;
+    }
+
+    if (playtime.match(letters) && playtime > 0) {
+        alert("Invalid input for playtime.")
+        return;
+    }
+
+    if (!year.match(validYear) && year >= 1888) {
+        alert("Invalid input for year.")
+        return;
+    }
+
+    if (fsk !== "0" && fsk !== "6" && fsk !== "12" && fsk !== "16" && fsk !== "18") {
+        alert("Invalid input for FSK.")
+        return;
+    }
+
+
+
+
+    let newEntry = [title, producer, year, playtime, fsk, ""];
 
     const tableBody = document.getElementById("tableBody");
     const rowBody = document.createElement("tr");
@@ -117,69 +141,46 @@ function buttonPressed() {
 function sortTable(n) {
     var rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     switching = true;
-    //Set the sorting direction to ascending:
-    dir = "asc";
+
     /*Make a loop that will continue until
     no switching has been done:*/
     while (switching) {
-        //start by saying: no switching is done:
         switching = false;
         rows = table.getElementsByTagName("tr");
-        /*Loop through all table rows (except the
-        first, which contains table headers):*/
+
         for (i = 2; i < (rows.length - 1); i++) {
-            //start by saying there should be no switching:
             shouldSwitch = false;
-            /*Get the two elements you want to compare,
-            one from current row and one from the next:*/
             x = rows[i].getElementsByTagName("td")[n];
             y = rows[i + 1].getElementsByTagName("td")[n];
-            /*check if the two rows should switch place,
-            based on the direction, asc or desc:*/
             if(n === "0") {
-                if (dir === "asc") {
-                    if (parseFloat(x.innerHTML.toLowerCase()) > parseFloat(y.innerHTML.toLowerCase())) {
-                        //if so, mark as a switch and break the loop:
-                        shouldSwitch= true;
-                        break;
-                    }
-                } else if (dir === "desc") {
-                    if (parseFloat(x.innerHTML.toLowerCase()) < parseFloat(y.innerHTML.toLowerCase())) {
-                        //if so, mark as a switch and break the loop:
-                        shouldSwitch= true;
-                        break;
-                    }
+                if (parseFloat(x.innerHTML.toLowerCase()) > parseFloat(y.innerHTML.toLowerCase())) {
+                    //if so, mark as a switch and break the loop:
+                    shouldSwitch= true;
+                    break;
                 }
             } else {
-                if (dir === "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        //if so, mark as a switch and break the loop:
-                        shouldSwitch= true;
-                        break;
-                    }
-                } else if (dir === "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        //if so, mark as a switch and break the loop:
-                        shouldSwitch= true;
-                        break;
-                    }
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    //if so, mark as a switch and break the loop:
+                    shouldSwitch= true;
+                    break;
                 }
             }
         }
-        if (shouldSwitch) {
-            /*If a switch has been marked, make the switch
-            and mark that a switch has been done:*/
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+    }
+
+    if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        //Each time a switch is done, increase this count by 1:
+        switchcount ++;
+    } else {
+        /*If no switching has been done AND the direction is "asc",
+        set the direction to "desc" and run the while loop again.*/
+        if (switchcount === 0 && dir === "asc") {
+            dir = "desc";
             switching = true;
-            //Each time a switch is done, increase this count by 1:
-            switchcount ++;
-        } else {
-            /*If no switching has been done AND the direction is "asc",
-            set the direction to "desc" and run the while loop again.*/
-            if (switchcount === 0 && dir === "asc") {
-                dir = "desc";
-                switching = true;
-            }
         }
     }
 }
