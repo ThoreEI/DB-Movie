@@ -89,7 +89,7 @@ function addMovie() {
         return;
     }
 
-    if (!year.match(validYear) && year >= 1888) {
+    if (!year.match(validYear) || year < 1888 || year > 2022) {
         alert("Invalid input for year.")
         return;
     }
