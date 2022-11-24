@@ -1,4 +1,4 @@
-const table = document.getElementById("movie-table")
+const table = document.getElementById("movie-table");
 const tableBody = document.getElementById("tableBody");
 let entries = {
     "Pulp_Fiction": {
@@ -48,6 +48,7 @@ function init() {
 }
 
 function createMovieTable() {
+    // creates the standard table with the entries from the Json object
     entries.forEach(function createRow(rowData) {
         const rowBody = document.createElement("tr");
         rowData.forEach(function createCell(cellData) {
@@ -58,18 +59,18 @@ function createMovieTable() {
                 addCloseButton(cell);
         });
     });
-
     table.appendChild(tableBody);
-    document.table.appendChild(table);
 }
 
 function addMovie() {
+    // get the input values
     let title = document.getElementById("inputTitle").value;
     let producer = document.getElementById("inputProducer").value;
     let year = document.getElementById("inputYear").value;
     let playtime = document.getElementById("inputPlaytime").value;
     let fsk = document.getElementById("inputFSK").value;
 
+    // check if all input fields are correctly filled
     let digits = new RegExp(/\d/)
     let letters = new RegExp(/\D/)
     let validYear = new RegExp(/\d{4}/)
@@ -99,6 +100,7 @@ function addMovie() {
         return;
     }
 
+    // create a new row with the input values
     let newEntry = [title, producer, year, playtime, fsk, ""];
     const tableBody = document.getElementById("tableBody");
     const rowBody = document.createElement("tr");
@@ -110,10 +112,29 @@ function addMovie() {
             addCloseButton(cell);
     });
     tableBody.appendChild(rowBody);
-    document.table.appendChild(table);
+
+    // clear the input fields and set the focus to the title input field
+    clearInputs();
+    setSelectionTitle();
 }
 
+function clearInputs() {
+    // clear the input fields
+    document.getElementById("inputTitle").value = "";
+    document.getElementById("inputProducer").value = "";
+    document.getElementById("inputYear").value = "";
+    document.getElementById("inputPlaytime").value = "";
+    document.getElementById("inputFSK").value = "";
+}
+
+function setSelectionTitle() {
+    // set the focus to the title input field
+    document.getElementById("inputTitle").select();
+}
+
+
 function addCloseButton(cell) {
+    // create a new button element and add it to the cell
     let closeButton = document.createElement("button");
     closeButton.innerHTML = "X";
     closeButton.setAttribute("id", "close");
@@ -123,6 +144,8 @@ function addCloseButton(cell) {
     cell.appendChild(closeButton)
 }
 
+
+// checks if the Enter Key is pressed and then calls the addMovie function
 buttonPressed();
 function buttonPressed() {
     document.addEventListener("keypress", function (event) {
@@ -132,10 +155,37 @@ function buttonPressed() {
     });
 }
 
+let arrowDown = "▼";
+let arrowUp = "▲";
+let prevColumn = -1;
+
+function spawnArrow(direction, n) {
+    // removes the arrow from the previous column
+    if (prevColumn !== -1) {
+        document.getElementsByTagName("th")[prevColumn].getElementsByTagName("i")[0].remove();
+    }
+
+    // creates a new arrow element and adds it to the column header
+    if (direction === "asc") {
+        let arrow = document.createElement("i");
+        arrow.innerHTML = arrowUp;
+        document.getElementsByTagName("th")[n].appendChild(arrow);
+        prevColumn = n;
+    } else if (direction === "desc") {
+        let arrow = document.createElement("i");
+        arrow.innerHTML = arrowDown;
+        document.getElementsByTagName("th")[n].appendChild(arrow);
+        prevColumn = n;
+    }
+
+}
+
+
 function sortTable(n) {
     let rows, switching, index, x, y, shouldSwitch, direction, switchCount = 0;
     switching = true;
     direction = "asc";
+
     while (switching) {
         switching = false;
         rows = table.rows;
@@ -155,8 +205,7 @@ function sortTable(n) {
                         break;
                     }
                 }
-            }
-            else {
+            } else {
                 if (direction === "asc") {
                     if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                         shouldSwitch = true;
@@ -182,4 +231,5 @@ function sortTable(n) {
             }
         }
     }
+    spawnArrow(direction, n);
 }
