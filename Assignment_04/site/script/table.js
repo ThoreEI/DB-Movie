@@ -39,16 +39,6 @@ let entries = {
     }
 }
 
-const arrowDown = "▼";
-const arrowUp = "▲";
-const prevHeader = -1;
-let currentYear = new Date().getFullYear();
-
-const digits = new RegExp(/\d/)
-const letters = new RegExp(/\D/)
-const validYear = new RegExp(/\d{4}/)
-
-
 function init() {
     // get the key set of the Json object entries
     let keys = Object.keys(entries);
@@ -90,6 +80,9 @@ function addMovie() {
     let year = document.getElementById("inputYear").value;
     let playtime = document.getElementById("inputPlaytime").value;
     let fsk = document.getElementById("inputFSK").value;
+    const digits = new RegExp(/\d/)
+    const letters = new RegExp(/\D/)
+    const validYear = new RegExp(/\d{4}/)
 
     // check if all input fields are correctly filled
     if (title === "" || producer === "" || year === "" || playtime === "" || fsk === "") {
@@ -137,7 +130,6 @@ function addMovie() {
 
 function clearInputs() {
     // clear the input fields
-    document.getElementById("tableBody").value = ""
     document.getElementById("inputTitle").value = "";
     document.getElementById("inputProducer").value = "";
     document.getElementById("inputYear").value = "";
@@ -161,31 +153,28 @@ function addCloseButton(cell) {
 buttonPressed();
 function buttonPressed() {
     document.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
+        if (event.key === "Enter")
             addMovie();
-        }
     });
 }
 
-
-function spawnArrow(direction, currentHeader) {
+let prevHeader = null;
+let currentYear = new Date().getFullYear();
+function showArrow(direction, currentHeader) {
     // removes the arrow from the previous column
-    if (prevHeader !== -1) {
+    if (prevHeader !== null)
         document.getElementsByTagName("th")[prevHeader].getElementsByTagName("i")[0].remove();
-    }
     prevHeader = currentHeader;
 
     // creates a new arrow element and adds it to the column header
+    let arrow = document.createElement("i");
     if (direction === "asc") {
-        let arrow = document.createElement("i");
-        arrow.innerHTML = arrowUp;
+        arrow.innerHTML = "▲";
         document.getElementsByTagName("th")[currentHeader].appendChild(arrow);
 
     } else if (direction === "desc") {
-        let arrow = document.createElement("i");
-        arrow.innerHTML = arrowDown;
+        arrow.innerHTML = "▼";
         document.getElementsByTagName("th")[currentHeader].appendChild(arrow);
-        
     }
 }
 
@@ -240,5 +229,5 @@ function sortTable(currentRow) {
             }
         }
     }
-    spawnArrow(direction, currentRow);
+    showArrow(direction, currentRow);
 }
