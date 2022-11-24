@@ -27,6 +27,15 @@ let entries = {
     }
 }
 
+let arrowDown = "▼";
+let arrowUp = "▲";
+let prevHeader = -1;
+let currentYear = new Date().getFullYear();
+
+let digits = new RegExp(/\d/)
+let letters = new RegExp(/\D/)
+let validYear = new RegExp(/\d{4}/)
+
 
 function init() {
     // get the key set of the Json object entries
@@ -71,10 +80,6 @@ function addMovie() {
     let fsk = document.getElementById("inputFSK").value;
 
     // check if all input fields are correctly filled
-    let digits = new RegExp(/\d/)
-    let letters = new RegExp(/\D/)
-    let validYear = new RegExp(/\d{4}/)
-
     if (title === "" || producer === "" || year === "" || playtime === "" || fsk === "") {
         alert("Please fill out all fields!");
         return;
@@ -90,7 +95,7 @@ function addMovie() {
         return;
     }
 
-    if (!year.match(validYear) || year < 1888 || year > new Date().getFullYear()) {
+    if (!year.match(validYear) || year < 1888 || year > currentYear) {
         alert("Invalid input for year.")
         return;
     }
@@ -115,7 +120,7 @@ function addMovie() {
 
     // clear the input fields and set the focus to the title input field
     clearInputs();
-    setSelectionTitle();
+    document.getElementById("inputTitle").select();
 }
 
 function clearInputs() {
@@ -126,12 +131,6 @@ function clearInputs() {
     document.getElementById("inputPlaytime").value = "";
     document.getElementById("inputFSK").value = "";
 }
-
-function setSelectionTitle() {
-    // set the focus to the title input field
-    document.getElementById("inputTitle").select();
-}
-
 
 function addCloseButton(cell) {
     // create a new button element and add it to the cell
@@ -155,33 +154,30 @@ function buttonPressed() {
     });
 }
 
-let arrowDown = "▼";
-let arrowUp = "▲";
-let prevColumn = -1;
 
-function spawnArrow(direction, n) {
+function spawnArrow(direction, currentHeader) {
     // removes the arrow from the previous column
-    if (prevColumn !== -1) {
-        document.getElementsByTagName("th")[prevColumn].getElementsByTagName("i")[0].remove();
+    if (prevHeader !== -1) {
+        document.getElementsByTagName("th")[prevHeader].getElementsByTagName("i")[0].remove();
     }
 
     // creates a new arrow element and adds it to the column header
     if (direction === "asc") {
         let arrow = document.createElement("i");
         arrow.innerHTML = arrowUp;
-        document.getElementsByTagName("th")[n].appendChild(arrow);
-        prevColumn = n;
+        document.getElementsByTagName("th")[currentHeader].appendChild(arrow);
+        prevHeader = currentHeader;
     } else if (direction === "desc") {
         let arrow = document.createElement("i");
         arrow.innerHTML = arrowDown;
-        document.getElementsByTagName("th")[n].appendChild(arrow);
-        prevColumn = n;
+        document.getElementsByTagName("th")[currentHeader].appendChild(arrow);
+        prevHeader = currentHeader;
     }
 
 }
 
 
-function sortTable(n) {
+function sortTable(currentRow) {
     let rows, switching, index, x, y, shouldSwitch, direction, switchCount = 0;
     switching = true;
     direction = "asc";
@@ -191,9 +187,9 @@ function sortTable(n) {
         rows = table.rows;
         for (index = 2; index < (rows.length - 1); index++) {
             shouldSwitch = false;
-            x = rows[index].getElementsByTagName("td")[n];
-            y = rows[index + 1].getElementsByTagName("td")[n];
-            if (n > 1) {
+            x = rows[index].getElementsByTagName("td")[currentRow];
+            y = rows[index + 1].getElementsByTagName("td")[currentRow];
+            if (currentRow > 1) {
                 if (direction === "asc") {
                     if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
                         shouldSwitch = true;
@@ -231,5 +227,5 @@ function sortTable(n) {
             }
         }
     }
-    spawnArrow(direction, n);
+    spawnArrow(direction, currentRow);
 }
