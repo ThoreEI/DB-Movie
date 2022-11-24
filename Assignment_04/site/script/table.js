@@ -90,7 +90,7 @@ function addMovie() {
         return;
     }
 
-    if (playtime.match(letters) && playtime > 0) {
+    if (playtime.match(letters) || playtime <= 0) {
         alert("Invalid input for playtime.")
         return;
     }
