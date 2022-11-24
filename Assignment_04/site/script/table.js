@@ -1,6 +1,18 @@
 const table = document.getElementById("movie-table");
 const tableBody = document.getElementById("tableBody");
 let entries = {
+    "The_Grudge": {
+        "producer": "Takashi Shimizu",
+        "year": "2005",
+        "playtime": "91",
+        "fsk": "16"
+    },
+    "Lucy": {
+        "producer": "Luc Besson",
+        "year": "2014",
+        "playtime": "89",
+        "fsk": "12"
+    },
     "Pulp_Fiction": {
         "producer": "Quentin Tarantino",
         "year": "1994",
@@ -27,14 +39,14 @@ let entries = {
     }
 }
 
-let arrowDown = "▼";
-let arrowUp = "▲";
-let prevHeader = -1;
+const arrowDown = "▼";
+const arrowUp = "▲";
+const prevHeader = -1;
 let currentYear = new Date().getFullYear();
 
-let digits = new RegExp(/\d/)
-let letters = new RegExp(/\D/)
-let validYear = new RegExp(/\d{4}/)
+const digits = new RegExp(/\d/)
+const letters = new RegExp(/\D/)
+const validYear = new RegExp(/\d{4}/)
 
 
 function init() {
@@ -125,6 +137,7 @@ function addMovie() {
 
 function clearInputs() {
     // clear the input fields
+    document.getElementById("tableBody").value = ""
     document.getElementById("inputTitle").value = "";
     document.getElementById("inputProducer").value = "";
     document.getElementById("inputYear").value = "";
@@ -178,7 +191,7 @@ function spawnArrow(direction, currentHeader) {
 
 
 function sortTable(currentRow) {
-    let rows, switching, index, x, y, shouldSwitch, direction, switchCount = 0;
+    let rows, switching, index, currentEntry, nextEntry, shouldSwitch, direction, switchCount = 0;
     switching = true;
     direction = "asc";
 
@@ -187,28 +200,28 @@ function sortTable(currentRow) {
         rows = table.rows;
         for (index = 2; index < (rows.length - 1); index++) {
             shouldSwitch = false;
-            x = rows[index].getElementsByTagName("td")[currentRow];
-            y = rows[index + 1].getElementsByTagName("td")[currentRow];
+            currentEntry = rows[index].getElementsByTagName("td")[currentRow];
+            nextEntry = rows[index + 1].getElementsByTagName("td")[currentRow];
             if (currentRow > 1) {
                 if (direction === "asc") {
-                    if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
+                    if (Number(currentEntry.innerHTML.toLowerCase()) > Number(nextEntry.innerHTML.toLowerCase())) {
                         shouldSwitch = true;
                         break;
                     }
                 } else if (direction === "desc") {
-                    if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())) {
+                    if (Number(currentEntry.innerHTML.toLowerCase()) < Number(nextEntry.innerHTML.toLowerCase())) {
                         shouldSwitch = true;
                         break;
                     }
                 }
             } else {
                 if (direction === "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    if (currentEntry.innerHTML.toLowerCase() > nextEntry.innerHTML.toLowerCase()) {
                         shouldSwitch = true;
                         break;
                     }
                 } else if (direction === "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    if (currentEntry.innerHTML.toLowerCase() < nextEntry.innerHTML.toLowerCase()) {
                         shouldSwitch = true;
                         break;
                     }
