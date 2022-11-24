@@ -160,20 +160,20 @@ function spawnArrow(direction, currentHeader) {
     if (prevHeader !== -1) {
         document.getElementsByTagName("th")[prevHeader].getElementsByTagName("i")[0].remove();
     }
+    prevHeader = currentHeader;
 
     // creates a new arrow element and adds it to the column header
     if (direction === "asc") {
         let arrow = document.createElement("i");
         arrow.innerHTML = arrowUp;
         document.getElementsByTagName("th")[currentHeader].appendChild(arrow);
-        prevHeader = currentHeader;
+
     } else if (direction === "desc") {
         let arrow = document.createElement("i");
         arrow.innerHTML = arrowDown;
         document.getElementsByTagName("th")[currentHeader].appendChild(arrow);
-        prevHeader = currentHeader;
+        
     }
-
 }
 
 
