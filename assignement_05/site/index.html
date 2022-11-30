@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script defer src="script/table.js"></script>
+    <link rel="stylesheet" href="css/indexStyle.css">
+    <?php
+        include("srcipt/table1.php");
+    ?>
+</head>
+<body onload="init()">
+
+<?php
+    echo "<p>Hello World</p>";
+?>
+
+
+
+<h1 class="text-center text-dark"> Movies </h1>
+<table class="container justify-content-center table border border-2 border-dark table-bordered sort" id="movie-table">
+    <thead>
+    <tr>
+        <th onclick="sortTable(0)">Title</th>
+        <th onclick="sortTable(1)">Producer</th>
+        <th onclick="sortTable(2)">Year</th>
+        <th onclick="sortTable(3)">Playtime</th>
+        <th onclick="sortTable(4)">FSK</th>
+    </tr>
+    </thead>
+
+    <tbody id="tableBody">
+    <tr>
+        <td><input type="text" id="inputTitle" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1"></td>
+        <td><input type="text" id="inputProducer" class="form-control" placeholder="Producer" aria-label="Producer" aria-describedby="basic-addon1"></td>
+        <td><input type="text" id="inputYear" class="form-control" placeholder="Year" aria-label="Year" aria-describedby="basic-addon1"></td>
+        <td><input type="text" id="inputPlaytime" class="form-control" placeholder="Playtime" aria-label="Playtime" aria-describedby="basic-addon1"></td>
+        <td><input type="text" id="inputFSK" class="form-control" placeholder="FSK" aria-label="FSK" aria-describedby="basic-addon1"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
