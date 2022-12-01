@@ -59,7 +59,6 @@ function init() {
 }
 
 function createMovieTable() {
-    // creates the standard table with the entries from the Json object
     entries.forEach(function createRow(rowData) {
         const rowBody = document.createElement("tr");
         rowData.forEach(function createCell(cellData) {
@@ -70,11 +69,12 @@ function createMovieTable() {
                 addCloseButton(cell);
         });
     });
+
     table.appendChild(tableBody);
+    document.table.appendChild(table);
 }
 
 function addMovie() {
-    // get the input values
     let title = document.getElementById("inputTitle").value;
     let producer = document.getElementById("inputProducer").value;
     let year = document.getElementById("inputYear").value;
@@ -135,6 +135,7 @@ function clearInputs() {
     document.getElementById("inputYear").value = "";
     document.getElementById("inputPlaytime").value = "";
     document.getElementById("inputFSK").value = "";
+
 }
 
 function addCloseButton(cell) {

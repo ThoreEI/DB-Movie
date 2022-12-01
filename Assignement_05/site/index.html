@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/indexStyle.css">
+</head>
+<body>
+
+<?php
+    echo ("test");
+?>
+
+<h1 class="text-center text-dark"> Movies </h1>
+<table class="container justify-content-center table border border-2 border-dark table-bordered sort" id="movie-table">
+    <thead>
+    <tr>
+        <th onclick="sortTable(0)"><input type="button" value="Titel"></th>
+        <th onclick="sortTable(1)"><input type="button" value="Producer"></th>
+        <th onclick="sortTable(2)"><input type="button" value="Year"></th>
+        <th onclick="sortTable(3)"><input type="button" value="Playtime"></th>
+        <th onclick="sortTable(4)"><input type="button" value="FSK"></th>
+    </tr>
+    </thead>
+</table>
+
+<h3>Eingabe eines neuen Films</h3>
+<form method="post" action="../src/Movie.php">
+    <table>
+        <tr>
+            <th>Titel</th>
+            <td><input type="text" name="title"></td>
+        </tr>
+        <tr>
+            <th>Regisseur</th>
+            <td><input type="text" name="producer"></td>
+        </tr>
+        <tr>
+            <th>Jahr</th>
+            <td><input type="text" name="year"></td>
+        </tr>
+        <tr>
+            <th>Spielzeit</th>
+            <td><input type="text" name="playtime"></td>
+        </tr>
+        <tr>
+            <th>FSK</th>
+            <td><input type="text" name="fsk"></td>
+        </tr>
+    </table>
+    <!--  planlos durch die gegend fahren bis in die leitplanke -->
+    <input type="submit" name="save" value="Speichern" onclick="">
+</form>
+<br>
+<input type="button" id="delSession" value="Session löschen">
+
+
+</body>
+</html>
