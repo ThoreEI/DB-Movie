@@ -6,80 +6,103 @@ $entries = array(
     new Film("Pulp Fiction", "Quentin Tarantino", "1994", "154", "16"),
     new Film("Inglorious Bastards", "Quentin Tarantino", "2009", "153", "16"),
     new Film("Reservoir Dogs", "Quentin Tarantino", "2005", "99", "18"),
-    new Film("Blade Runner", "Ridley Scott", "1982", "117", "16")
+    new Film("Blade Runner", "Ridley Scott", "1982", "117", "16"),
 );
 
-init();
-if (isset($_POST["save"])) {
-    // go to the previous page
-    echo "lol";
-    //header("Location: " . $_SERVER["HTTP_REFERER"]);
+session_start();
+if (isset($_SESSION['entries'])) {
+    $entries = $_SESSION['entries'];
+}
+
+if (isset($_POST["submitEntry"])) {
     addMovie();
+    init();
 }
 
-
-function addMovie(){
-    if (isset($_POST['save'])) {
-        global $entries;
-        $title = $_REQUEST['title'];
-        $producer = $_REQUEST['producer'];
-        $year = $_REQUEST['year'];
-        $playtime = $_REQUEST['playtime'];
-        $fsk = $_REQUEST['fsk'];
-        $newMovie = new Film($title, $producer, $year, $playtime, $fsk);
-
-        $entries->array_push($newMovie);
-    }
+if (isset($_POST["delSession"])) {
+    unset($_SESSION['entries']);
 }
 
-function createMovieTable(){
+print_r($_SESSION['entries']);
+
+
+function addMovie()
+{
     global $entries;
-    foreach ($entries as $entry) {
-        echo "<tr>";
-        echo "<td>" . $entry->title . "</td>";
-        echo "<td>" . $entry->producer . "</td>";
-        echo "<td>" . $entry->year . "</td>";
-        echo "<td>" . $entry->playtime . "</td>";
-        echo "<td>" . $entry->fsk . "</td>";
-        echo "</tr>";
-    }
+    $title = $_POST['title'];
+    $producer = $_POST['producer'];
+    $year = $_POST['year'];
+    $playtime = $_POST['playtime'];
+    $fsk = $_POST['fsk'];
+    $newMovie = new Film($title, $producer, $year, $playtime, $fsk);
+
+    array_push($entries, $newMovie);
+    $_SESSION['entries'] = $entries;
 }
 
-/**
- * @throws DOMException
- */
-function init(){
+function deleteRow()
+{
     global $entries;
-    global $table;
-    global $table_body;
-    foreach ($entries as $rowData) {
-        $rowBody = (new DOMDocument)->createElement("tr");
-        forEach($rowData as $key => $value){
-            $cell = (new DOMDocument)->createElement("td");
-            $cell->nodeValue = $value;
-            $textNodeValue = (new DOMDocument)->createTextNode($value);
-            $cell->appendChild($textNodeValue);
-            $rowBody->appendChild($cell);
-            $table_body->appendChild($rowBody);
-            if ($textNodeValue == ""){
-                addCloseButton();
+    $index = $_POST['index'];
+    unset($entries[$index]);
+    $_SESSION['entries'] = $entries;
+}
+
+function init()
+{
+    global $entries;
+
+    $dom = new DOMDocument();
+    $dom->loadHTMLFile("../site/template.html");
+    $table = $dom->getElementById("movie-table");
+    $tbody = $dom->getElementById("tbody");
+
+    foreach ($entries as $entry => $val) {
+        $tr = $dom->createElement("tr");
+        foreach ($val as $key => $value) {
+            $num = $dom->createElement("td", $entry);
+
+            if ($key == "title") {
+                $tr->appendChild($num);
+            }
+
+            $td = $dom->createElement("td");
+            $td->nodeValue = $value;
+            $tr->appendChild($td);
+            if ($key == "fsk"){
+
+                // create a new form element
+                $form = $dom->createElement("form");
+                $form->setAttribute("method", "post");
+                $form->setAttribute("action", "../src/Movie.php");
+
+
+                $td = $dom->createElement("td");
+                $button = $dom->createElement("button");
+                $button->setAttribute("type", "submit");
+                $button->setAttribute("name", "delete");
+                $button->setAttribute("value", $value);
+                $button->nodeValue = "Delete";
+                $td->appendChild($button);
+                $form->appendChild($td);
+                $tr->appendChild($form);
             }
         }
+        $tbody->appendChild($tr);
     }
-    $table->appendChild($table_body);
-    (new DOMDocument)->appendChild($table);
+    echo $dom->saveHTML();
 }
 
-function addCloseButton(){
+function addCloseButton()
+{
     $closeButton = DOMDocument::createElement("button");
     $closeButton->setAttribute("id", "close");
-    $closeButton->addEventListener("click", function() use ($closeButton) {
+    $closeButton->addEventListener("click", function () use ($closeButton) {
         $closeButton->parentNode->remove();
     });
     $closeButton->nodeValue = "Close";
     DOMDocument::appendChild($closeButton);
 }
-
 
 
 
