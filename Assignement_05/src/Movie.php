@@ -9,8 +9,9 @@ $entries = array(
     new Film("Blade Runner", "Ridley Scott", "1982", "117", "16"),
 );
 
-session_start();
+
 if (isset($_SESSION['entries'])) {
+    session_start();
     $entries = $_SESSION['entries'];
 }
 
@@ -20,10 +21,14 @@ if (isset($_POST["submitEntry"])) {
 }
 
 if (isset($_POST["delSession"])) {
-    unset($_SESSION['entries']);
+    $_COOKIE = array();
 }
 
-print_r($_SESSION['entries']);
+if (isset($_POST["delete"])) {
+    deleteRow();
+    init();
+}
+
 
 
 function addMovie()
@@ -43,8 +48,11 @@ function addMovie()
 function deleteRow()
 {
     global $entries;
-    $index = $_POST['index'];
-    unset($entries[$index]);
+    // get the index of the row to delete
+    $index = $_POST['value'];
+    // remove the row from the array
+    array_splice($entries, $index, 1);
+    // update the session variable
     $_SESSION['entries'] = $entries;
 }
 
@@ -81,7 +89,8 @@ function init()
                 $button = $dom->createElement("button");
                 $button->setAttribute("type", "submit");
                 $button->setAttribute("name", "delete");
-                $button->setAttribute("value", $value);
+                $button->setAttribute("value", $entry);
+
                 $button->nodeValue = "Delete";
                 $td->appendChild($button);
                 $form->appendChild($td);
