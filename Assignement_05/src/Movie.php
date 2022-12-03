@@ -1,18 +1,19 @@
 <?php
 require "Film.php";
-$entries = array(
-    new Film("The Grudge", "Takashi Shimizu", "2005", "91", "16"),
-    new Film("Lucy", "Luc Besson", "2014", "89", "12"),
-    new Film("Pulp Fiction", "Quentin Tarantino", "1994", "154", "16"),
-    new Film("Inglorious Bastards", "Quentin Tarantino", "2009", "153", "16"),
-    new Film("Reservoir Dogs", "Quentin Tarantino", "2005", "99", "18"),
-    new Film("Blade Runner", "Ridley Scott", "1982", "117", "16"),
-);
 
-
+session_start();
 if (isset($_SESSION['entries'])) {
-    session_start();
     $entries = $_SESSION['entries'];
+} else {
+    $entries = array(
+        new Film("The Grudge", "Takashi Shimizu", "2005", "91", "16"),
+        new Film("Lucy", "Luc Besson", "2014", "89", "12"),
+        new Film("Pulp Fiction", "Quentin Tarantino", "1994", "154", "16"),
+        new Film("Inglorious Bastards", "Quentin Tarantino", "2009", "153", "16"),
+        new Film("Reservoir Dogs", "Quentin Tarantino", "2005", "99", "18"),
+        new Film("Blade Runner", "Ridley Scott", "1982", "117", "16"),
+    );
+    $_SESSION['entries'] = $entries;
 }
 
 if (isset($_POST["submitEntry"])) {
@@ -21,7 +22,16 @@ if (isset($_POST["submitEntry"])) {
 }
 
 if (isset($_POST["delSession"])) {
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000, $params["path"],
+            $params["domain"], $params["secure"], $params["httponly"]
+        );
+    }
+    session_destroy();
     $_COOKIE = array();
+    $_SESSION['entries'] = array();
+    header("Location: ../site/index.php");
 }
 
 if (isset($_POST["delete"])) {
@@ -29,9 +39,54 @@ if (isset($_POST["delete"])) {
     init();
 }
 
+if (isset($_POST["title"])) {
+    sortEntries("title");
+}
 
+if (isset($_POST["producer"])) {
+    sortEntries("producer");
+}
 
-function addMovie()
+if (isset($_POST["year"])) {
+    sortEntries("year");
+}
+
+if (isset($_POST["playtime"])) {
+    sortEntries("playtime");
+}
+
+if (isset($_POST["fsk"])) {
+    sortEntries("fsk");
+}
+
+function sortEntries($sort) : void {
+    $entries = $_SESSION['entries'];
+    if ($sort == "title") {
+        usort($entries, function ($a, $b) {
+            return strcmp($a->title, $b->title);
+        });
+    } elseif ($sort == "producer") {
+        usort($entries, function ($a, $b) {
+            return strcmp($a->producer, $b->producer);
+        });
+    } elseif ($sort == "year") {
+        usort($entries, function ($a, $b) {
+            return $a->year <=> $b->year;
+        });
+    } elseif ($sort == "playtime") {
+        usort($entries, function ($a, $b) {
+            return $a->playtime <=> $b->playtime;
+        });
+    } elseif ($sort == "fsk") {
+        usort($entries, function ($a, $b) {
+            return strcmp($a->fsk, $b->fsk);
+        });
+    }
+    $_SESSION['entries'] = $entries;
+    header("Location: ../site/index.php");
+}
+
+function addMovie(): void
 {
     global $entries;
     $title = $_POST['title'];
@@ -45,18 +100,25 @@ function addMovie()
     $_SESSION['entries'] = $entries;
 }
 
-function deleteRow()
+function deleteRow(): void
 {
     global $entries;
-    // get the index of the row to delete
-    $index = $_POST['value'];
-    // remove the row from the array
-    array_splice($entries, $index, 1);
-    // update the session variable
+
+    // get the entries from the session
+    $entries = $_SESSION['entries'];
+
+
+    $del = $_POST['delete'];
+    print_r($del);
+    unset($entries[$del]);
+
     $_SESSION['entries'] = $entries;
 }
 
-function init()
+/**
+ * @throws DOMException
+ */
+function init(): void
 {
     global $entries;
 
@@ -77,13 +139,12 @@ function init()
             $td = $dom->createElement("td");
             $td->nodeValue = $value;
             $tr->appendChild($td);
-            if ($key == "fsk"){
+            if ($key == "fsk") {
 
                 // create a new form element
                 $form = $dom->createElement("form");
                 $form->setAttribute("method", "post");
                 $form->setAttribute("action", "../src/Movie.php");
-
 
                 $td = $dom->createElement("td");
                 $button = $dom->createElement("button");
@@ -102,16 +163,6 @@ function init()
     echo $dom->saveHTML();
 }
 
-function addCloseButton()
-{
-    $closeButton = DOMDocument::createElement("button");
-    $closeButton->setAttribute("id", "close");
-    $closeButton->addEventListener("click", function () use ($closeButton) {
-        $closeButton->parentNode->remove();
-    });
-    $closeButton->nodeValue = "Close";
-    DOMDocument::appendChild($closeButton);
-}
 
 
 

@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+    <link rel="stylesheet" href="../site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/indexStyle.css">
+</head>
 <body>
 <h1 class="text-center text-dark"> Movies </h1>
 <table class="container justify-content-center table border border-2 border-dark table-bordered sort" id="movie-table">
     <thead>
     <tr>
-        <th></th>
-        <th onclick="sortTable(0)"><input type="button" value="Titel"></th>
-        <th onclick="sortTable(1)"><input type="button" value="Producer"></th>
-        <th onclick="sortTable(2)"><input type="button" value="Year"></th>
-        <th onclick="sortTable(3)"><input type="button" value="Playtime"></th>
-        <th onclick="sortTable(4)"><input type="button" value="FSK"></th>
-        <th></th>
+        <form method="post" action="../src/Movie.php">
+            <th></th>
+            <th><input type="submit" value="Titel" name="title"></th>
+            <th><input type="submit" value="Producer" name="producer"></th>
+            <th><input type="submit" value="Year" name="year"></th>
+            <th><input type="submit" value="Playtime" name="playtime"></th>
+            <th><input type="submit" value="FSK" name="fsk"></th>
+            <th></th>
+        </form>
+
     </tr>
     </thead>
     <tbody id="tbody">
@@ -28,7 +37,7 @@
         </tr>
         <tr>
             <th>Regisseur</th>
-            <td><input type="text" name="producer" pattern="[a-zA-Z]+" required="true" ></td>
+            <td><input type="text" name="producer" pattern="[a-zA-Z]+" required="true"></td>
         </tr>
         <tr>
             <th>Jahr</th>
@@ -44,19 +53,14 @@
         </tr>
     </table>
     <!--  planlos durch die gegend fahren bis in die leitplanke -->
-    <input type="submit" name="submitEntry" value="Speichern" onclick="">
+    <input type="submit" name="submitEntry" value="Speichern">
 </form>
 <br>
-<form method="post" action="../src/deleteSession.php">
+<form method="post" action="../src/Movie.php">
     <input type="submit" name="delSession" value="Session löschen">
 </form>
 
 
 </body>
-<head>
-    <meta charset="UTF-8">
-    <title>Movies</title>
-    <link rel="stylesheet" href="../site/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/indexStyle.css">
-</head>
+
 </html>
