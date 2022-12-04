@@ -13,51 +13,49 @@
     <tr>
         <form method="post" action="../src/Movie.php">
             <th></th>
-            <th><input type="submit" value="Titel" name="title"></th>
+            <th><input type="submit" value="Title" name="title"></th>
             <th><input type="submit" value="Producer" name="producer"></th>
             <th><input type="submit" value="Year" name="year"></th>
             <th><input type="submit" value="Playtime" name="playtime"></th>
             <th><input type="submit" value="FSK" name="fsk"></th>
             <th></th>
         </form>
-
     </tr>
     </thead>
-    <tbody id="tbody">
+    <tbody id="tableBody">
 
     </tbody>
 </table>
 
-<h3>Eingabe eines neuen Films</h3>
+<h3>Add a new movie</h3>
 <form method="post" action="../src/Movie.php">
     <table>
         <tr>
-            <th>Titel</th>
+            <th>Title</th>
             <td><input type="text" name="title"></td>
         </tr>
         <tr>
-            <th>Regisseur</th>
-            <td><input type="text" name="producer" pattern="[a-zA-Z]+" required="true"></td>
+            <th>Producer</th>
+            <td><input type="text" name="producer" pattern="[a-zA-Z]+" required></td>
         </tr>
         <tr>
-            <th>Jahr</th>
-            <td><input type="text" name="year" pattern="[0-9]+" required="true"></td>
+            <th>Year</th>
+            <td><input type="text" name="year" pattern="[0-9]+" required></td>
         </tr>
         <tr>
-            <th>Spielzeit</th>
-            <td><input type="text" name="playtime"></td>
+            <th>Playtime</th>
+            <td><input type="text" name="playtime" pattern="[1-9]{1:}[0-9]+" required> </td>
         </tr>
         <tr>
             <th>FSK</th>
-            <td><input type="text" name="fsk"></td>
+            <td><input type="text" name="fsk" pattern="0|6|12|16|18" required> </td>
         </tr>
     </table>
-    <!--  planlos durch die gegend fahren bis in die leitplanke -->
-    <input type="submit" name="submitEntry" value="Speichern">
+    <input type="submit" name="submitEntry">
 </form>
 <br>
 <form method="post" action="../src/Movie.php">
-    <input type="submit" name="delSession" value="Session löschen">
+    <input type="submit" name="deleteSession">
 </form>
 
 

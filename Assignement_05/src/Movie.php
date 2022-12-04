@@ -21,7 +21,7 @@ if (isset($_POST["submitEntry"])) {
     init();
 }
 
-if (isset($_POST["delSession"])) {
+if (isset($_POST["deleteSession"])) {
     if (ini_get("session.use_cookies")) {
         $params = session_get_cookie_params();
         setcookie(session_name(), '', time() - 42000, $params["path"],
@@ -39,25 +39,20 @@ if (isset($_POST["delete"])) {
     init();
 }
 
-if (isset($_POST["title"])) {
+if (isset($_POST["title"]))
     sortEntries("title");
-}
 
-if (isset($_POST["producer"])) {
+if (isset($_POST["producer"]))
     sortEntries("producer");
-}
 
-if (isset($_POST["year"])) {
+if (isset($_POST["year"]))
     sortEntries("year");
-}
 
-if (isset($_POST["playtime"])) {
+if (isset($_POST["playtime"]))
     sortEntries("playtime");
-}
 
-if (isset($_POST["fsk"])) {
+if (isset($_POST["fsk"]))
     sortEntries("fsk");
-}
 
 function sortEntries($sort) : void {
     $entries = $_SESSION['entries'];
@@ -86,8 +81,7 @@ function sortEntries($sort) : void {
     header("Location: ../site/index.php");
 }
 
-function addMovie(): void
-{
+function addMovie(): void {
     global $entries;
     $title = $_POST['title'];
     $producer = $_POST['producer'];
@@ -95,37 +89,27 @@ function addMovie(): void
     $playtime = $_POST['playtime'];
     $fsk = $_POST['fsk'];
     $newMovie = new Film($title, $producer, $year, $playtime, $fsk);
-
-    array_push($entries, $newMovie);
+    $entries[] = $newMovie;
     $_SESSION['entries'] = $entries;
 }
 
-function deleteRow(): void
-{
+function deleteRow(): void {
     global $entries;
-
     // get the entries from the session
     $entries = $_SESSION['entries'];
-
-
     $del = $_POST['delete'];
-    print_r($del);
     unset($entries[$del]);
-
     $_SESSION['entries'] = $entries;
 }
 
 /**
  * @throws DOMException
  */
-function init(): void
-{
+function init(): void {
     global $entries;
-
     $dom = new DOMDocument();
     $dom->loadHTMLFile("../site/template.html");
-    $table = $dom->getElementById("movie-table");
-    $tbody = $dom->getElementById("tbody");
+    $tableBody = $dom->getElementById("tableBody");
 
     foreach ($entries as $entry => $val) {
         $tr = $dom->createElement("tr");
@@ -158,14 +142,7 @@ function init(): void
                 $tr->appendChild($form);
             }
         }
-        $tbody->appendChild($tr);
+        $tableBody->appendChild($tr);
     }
     echo $dom->saveHTML();
 }
-
-
-
-
-
-
-
