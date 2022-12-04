@@ -22,19 +22,6 @@ if (isset($_POST["submitEntry"])) {
     init();
 }
 
-if (isset($_POST["deleteSession"])) {
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000, $params["path"],
-            $params["domain"], $params["secure"], $params["httponly"]
-        );
-    }
-    session_destroy();
-    $_COOKIE = array();
-    $_SESSION['entries'] = array();
-    header("Location: ../site/index.php");
-}
-
 if (isset($_POST["delete"])) {
     deleteRow();
     init();

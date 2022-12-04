@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Movies</title>
     <link rel="stylesheet" href="../site/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/indexStyle.css">
+    <link rel="stylesheet" href="css/templateStyle.css">
 </head>
 <body>
 <h1 class="text-center text-dark"> Movies </h1>
@@ -26,35 +26,36 @@
     </tbody>
 </table>
 
-<h3>Add a new movie</h3>
-<form method="post" action="../src/Movie.php">
-    <table>
-        <tr>
-            <th>Title</th>
-            <td><input type="text" name="title"></td>
-        </tr>
-        <tr>
-            <th>Producer</th>
-            <td><input type="text" name="producer" pattern="[a-zA-Z]+" required></td>
-        </tr>
-        <tr>
-            <th>Year</th>
-            <td><input type="text" name="year" pattern="[0-9]{4}" required></td>
-        </tr>
-        <tr>
-            <th>Playtime</th>
-            <td><input type="text" name="playtime" pattern="0*[1-9][0-9]*" required> </td>
-        </tr>
-        <tr>
-            <th>FSK</th>
-            <td><input type="text" name="fsk" pattern="0|6|12|16|18" required> </td>
-        </tr>
-    </table>
-    <input type="submit" name="submitEntry" value="Add Movie" class="btn btn-success">
-</form>
-<form action="../src/deleteSession.php">
-    <input type="submit" value="Delete session" class="btn btn-danger">
-</form>
+    <h3>Add a new movie</h3>
+    <form method="post" action="../src/Movie.php" id="input-fields-for-new-movie">
+        <table class="justify-content-center">
+            <tr>
+                <th>Title</th>
+                <td><input type="text" name="title" class="input-field-movie" required></td>
+            </tr>
+            <tr>
+                <th>Producer</th>
+                <td><input type="text" name="producer" class="input-field-movie" pattern="[a-zA-Z]+" required></td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td><input type="text" name="year" class="input-field-movie" pattern="[0-9]{4}" required></td>
+            </tr>
+            <tr>
+                <th>Playtime</th>
+                <td><input type="text" name="playtime" class="input-field-movie" pattern="0*[1-9][0-9]*" required> </td>
+            </tr>
+            <tr>
+                <th>FSK</th>
+                <td><input type="text" name="fsk" class="input-field-movie" pattern="0|6|12|16|18" required> </td>
+            </tr>
+        </table>
+        <input type="submit" name="submitEntry" value="Add Movie" class="btn btn-success">
+    </form>
+
+    <form action="../src/deleteSession.php">
+        <input type="submit" value="Delete session" class="btn btn-danger">
+    </form>
 <br>
 </body>
 </html>
