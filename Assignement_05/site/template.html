@@ -26,29 +26,27 @@
     </tbody>
 </table>
 
+<div class="justify-content-center text-center">
     <h3>Add a new movie</h3>
-    <form method="post" action="../src/Movie.php" id="input-fields-for-new-movie">
-        <table class="justify-content-center">
-            <tr>
-                <th>Title</th>
-                <td><input type="text" name="title" class="input-field-movie" required></td>
-            </tr>
-            <tr>
-                <th>Producer</th>
-                <td><input type="text" name="producer" class="input-field-movie" pattern="[a-zA-Z]+" required></td>
-            </tr>
-            <tr>
-                <th>Year</th>
-                <td><input type="text" name="year" class="input-field-movie" pattern="[0-9]{4}" required></td>
-            </tr>
-            <tr>
-                <th>Playtime</th>
-                <td><input type="text" name="playtime" class="input-field-movie" pattern="0*[1-9][0-9]*" required> </td>
-            </tr>
-            <tr>
-                <th>FSK</th>
-                <td><input type="text" name="fsk" class="input-field-movie" pattern="0|6|12|16|18" required> </td>
-            </tr>
+
+    <form method="post" action="../src/Movie.php" id="input-fields-for-new-movie" >
+        <table class="justify-content-center input-group">
+                <tr>
+                    <td><input type="text" name="title" class="input-field-movie" required placeholder="Title"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="producer" class="input-field-movie" pattern="[a-zA-Z]+" required placeholder="Producer"></td>
+                </tr>
+                <tr>
+
+                    <td><input type="text" name="year" class="input-field-movie" pattern="[0-9]{4}" required placeholder="Year"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="playtime" class="input-field-movie" pattern="0*[1-9][0-9]*" required placeholder="Playtime"> </td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="fsk" class="input-field-movie" pattern="0|6|12|16|18" required placeholder="FSK"> </td>
+                </tr>
         </table>
         <input type="submit" name="submitEntry" value="Add Movie" class="btn btn-success">
     </form>
@@ -56,6 +54,7 @@
     <form action="../src/deleteSession.php">
         <input type="submit" value="Delete session" class="btn btn-danger">
     </form>
+</div>
 <br>
 </body>
 </html>
