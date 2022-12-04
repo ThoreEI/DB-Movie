@@ -2,6 +2,7 @@
 require "Film.php";
 
 session_start();
+
 if (isset($_SESSION['entries'])) {
     $entries = $_SESSION['entries'];
 } else {
@@ -39,48 +40,6 @@ if (isset($_POST["delete"])) {
     init();
 }
 
-if (isset($_POST["title"]))
-    sortEntries("title");
-
-if (isset($_POST["producer"]))
-    sortEntries("producer");
-
-if (isset($_POST["year"]))
-    sortEntries("year");
-
-if (isset($_POST["playtime"]))
-    sortEntries("playtime");
-
-if (isset($_POST["fsk"]))
-    sortEntries("fsk");
-
-function sortEntries($sort) : void {
-    $entries = $_SESSION['entries'];
-    if ($sort == "title") {
-        usort($entries, function ($a, $b) {
-            return strcmp($a->title, $b->title);
-        });
-    } elseif ($sort == "producer") {
-        usort($entries, function ($a, $b) {
-            return strcmp($a->producer, $b->producer);
-        });
-    } elseif ($sort == "year") {
-        usort($entries, function ($a, $b) {
-            return $a->year <=> $b->year;
-        });
-    } elseif ($sort == "playtime") {
-        usort($entries, function ($a, $b) {
-            return $a->playtime <=> $b->playtime;
-        });
-    } elseif ($sort == "fsk") {
-        usort($entries, function ($a, $b) {
-            return strcmp($a->fsk, $b->fsk);
-        });
-    }
-    $_SESSION['entries'] = $entries;
-    header("Location: ../site/index.php");
-}
-
 function addMovie(): void {
     global $entries;
     $title = $_POST['title'];
@@ -116,9 +75,8 @@ function init(): void {
         foreach ($val as $key => $value) {
             $num = $dom->createElement("td", $entry);
 
-            if ($key == "title") {
+            if ($key == "title")
                 $tr->appendChild($num);
-            }
 
             $td = $dom->createElement("td");
             $td->nodeValue = $value;

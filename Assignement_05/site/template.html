@@ -11,19 +11,18 @@
 <table class="container justify-content-center table border border-2 border-dark table-bordered sort" id="movie-table">
     <thead>
     <tr>
-        <form method="post" action="../src/Movie.php">
+        <form method="post">
             <th></th>
-            <th><input type="submit" value="Title" name="title"></th>
-            <th><input type="submit" value="Producer" name="producer"></th>
-            <th><input type="submit" value="Year" name="year"></th>
-            <th><input type="submit" value="Playtime" name="playtime"></th>
-            <th><input type="submit" value="FSK" name="fsk"></th>
+            <th><input type="submit" value="Title" formaction="sortTable.php?value_to_sort_by=title"></th>
+            <th><input type="submit" value="Producer" formaction="sortTable.php?value_to_sort_by=producer"></th>
+            <th><input type="submit" value="Year" formaction="sortTable.php?value_to_sort_by=year"></th>
+            <th><input type="submit" value="Playtime" formaction="sortTable.php?value_to_sort_by=playtime"></th>
+            <th><input type="submit" value="FSK" formaction="sortTable.php?value_to_sort_by=fsk"></th>
             <th></th>
         </form>
     </tr>
     </thead>
     <tbody id="tableBody">
-
     </tbody>
 </table>
 
@@ -40,25 +39,19 @@
         </tr>
         <tr>
             <th>Year</th>
-            <td><input type="text" name="year" pattern="[0-9]+" required></td>
+            <td><input type="text" name="year" pattern="[0-9]{4}" required></td>
         </tr>
         <tr>
             <th>Playtime</th>
-            <td><input type="text" name="playtime" pattern="[1-9]{1:}[0-9]+" required> </td>
+            <td><input type="text" name="playtime" pattern="0*[1-9][0-9]*" required> </td>
         </tr>
         <tr>
             <th>FSK</th>
             <td><input type="text" name="fsk" pattern="0|6|12|16|18" required> </td>
         </tr>
     </table>
-    <input type="submit" name="submitEntry">
+    <input type="submit" name="submitEntry" value="Add Movie">
 </form>
 <br>
-<form method="post" action="../src/Movie.php">
-    <input type="submit" name="deleteSession">
-</form>
-
-
 </body>
-
 </html>

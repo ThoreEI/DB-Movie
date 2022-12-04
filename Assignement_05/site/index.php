@@ -6,10 +6,13 @@
     <link rel="stylesheet" href="../site/css/bootstrap.min.css">
 </head>
 <body>
-
 <?php
 require '../src/Movie.php';
-init();
+try {
+    init();
+} catch (DOMException $e) {
+    echo $e->getMessage();
+}
 ?>
 
 </body>
