@@ -1,0 +1,23 @@
+.input-field-movie {
+    margin-left: 10px;
+}
+
+.btn-success, .btn-danger {
+    margin-top: 10px;
+}
+
+.tbl-container {
+    width: 400px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.bg-red {
+    background-color: red;
+    color: white;
+}
+
+.bdr {
+    border-radius: 6px;
+    overflow: hidden;
+}

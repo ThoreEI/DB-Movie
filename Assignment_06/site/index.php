@@ -3,11 +3,15 @@ require_once __DIR__ . '\..\vendor\autoload.php';
 require_once "FilmClass.php";
 
 use Twig\Environment;
+use Twig\Extension\StringLoaderExtension;
 use Twig\TwigFilter;
 use Twig\Loader\FilesystemLoader;
 
 $loader = new FilesystemLoader('.');
 $twig = new Environment($loader);
+$twig->addExtension(new StringLoaderExtension());
+
+
 
 session_start();
 
@@ -38,6 +42,26 @@ if (isset($_POST["delete"])) {
     deleteMovie();
 }
 
+if (isset($_POST["title"])) {
+    sortEntries("title");
+}
+
+if (isset($_POST["producer"])) {
+    sortEntries("producer");
+}
+
+if (isset($_POST["year"])) {
+    sortEntries("year");
+}
+
+if (isset($_POST["playtime"])) {
+    sortEntries("playtime");
+}
+
+if (isset($_POST["fsk"])) {
+    sortEntries("fsk");
+}
+
 function deleteMovie(): void
 {
     $filme = $_SESSION['filme'];
@@ -66,6 +90,35 @@ function deleteSession(): void {
     session_destroy();
 }
 
+function sortEntries($sort): void
+{
+    $filme = $_SESSION['filme'];
+    if ($sort == "title") {
+        usort($filme, function ($a, $b) {
+            return strcmp(strtolower($a->title), strtolower($b->title));
+        });
+    } elseif ($sort == "producer") {
+        usort($filme, function ($a, $b) {
+            return strcmp(strtolower($a->producer), strtolower($b->producer));
+        });
+    } elseif ($sort == "year") {
+        usort($filme, function ($a, $b) {
+            return $a->year <=> $b->year;
+        });
+    } elseif ($sort == "playtime") {
+        usort($filme, function ($a, $b) {
+            return $a->playtime <=> $b->playtime;
+        });
+    } elseif ($sort == "fsk") {
+        usort($filme, function ($a, $b) {
+            return strcmp(strtolower($a->fsk), strtolower($b->fsk));
+        });
+    }
+    $_SESSION['filme'] = $filme;
+    header("Location: index.php");
+}
+
 $twig->addGlobal('filme', $filme);
 echo $twig->render('template/index.html.twig', []);
+
 

@@ -4,6 +4,7 @@
     <title>Movies</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/templateStyle.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -12,18 +13,17 @@
     filme: {{ app.session.filme }}
 {% endif %}
 
-
 <h1 class="text-center text-dark"> Movies </h1>
-<table class="container justify-content-center table border border-2 border-dark table-bordered sort" id="movie-table">
+<table class="container justify-content-center table border border-2 border-dark table-bordered align-middle text-center" id="movie-table">
     <thead>
     <tr>
-        <form method="post">
+        <form method="post" action="../index.php">
             <th></th>
-            <th><input type="submit" value="Title" formaction="sortTable.php?value_to_sort_by=title"></th>
-            <th><input type="submit" value="Producer" formaction="sortTable.php?value_to_sort_by=producer"></th>
-            <th><input type="submit" value="Year" formaction="sortTable.php?value_to_sort_by=year"></th>
-            <th><input type="submit" value="Playtime" formaction="sortTable.php?value_to_sort_by=playtime"></th>
-            <th><input type="submit" value="FSK" formaction="sortTable.php?value_to_sort_by=fsk"></th>
+            <th><input type="submit" value="Title"  name="title"></th>
+            <th><input type="submit" value="Producer"  name="producer"></th>
+            <th><input type="submit" value="Year" name="year"></th>
+            <th><input type="submit" value="Playtime" name="playtime"></th>
+            <th><input type="submit" value="FSK" name="fsk"></th>
             <th></th>
         </form>
     </tr>
@@ -50,23 +50,23 @@
     <form method="post" action="../index.php" id="input-fields-for-new-movie">
         <table class="justify-content-center input-group">
             <tr>
-                <td><input type="text" name="title" class="input-field-movie" required placeholder="Title"></td>
+                <td><input type="text" name="title" class="input-field-movie form-control form-control-color w-100" required placeholder="Title"></td>
             </tr>
             <tr>
-                <td><input type="text" name="producer" class="input-field-movie" pattern="[a-zA-Z]+" required
+                <td><input type="text" name="producer" class="input-field-movie form-control form-control-color w-100" pattern="[a-zA-Z]+" required
                            placeholder="Producer"></td>
             </tr>
             <tr>
 
-                <td><input type="text" name="year" class="input-field-movie" pattern="[0-9]{4}" required
+                <td><input type="text" name="year" class="input-field-movie form-control form-control-color w-100" pattern="[0-9]{4}" required
                            placeholder="Year"></td>
             </tr>
             <tr>
-                <td><input type="text" name="playtime" class="input-field-movie" pattern="0*[1-9][0-9]*" required
+                <td><input type="text" name="playtime" class="input-field-movie form-control form-control-color w-100" pattern="0*[1-9][0-9]*" required
                            placeholder="Playtime"></td>
             </tr>
             <tr>
-                <td><input type="text" name="fsk" class="input-field-movie" pattern="0|6|12|16|18" required
+                <td><input type="text" name="fsk" class="input-field-movie form-control form-control-color w-100" pattern="0|6|12|16|18" required
                            placeholder="FSK"></td>
             </tr>
         </table>
