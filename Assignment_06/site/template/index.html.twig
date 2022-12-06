@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Webpage</title>
+    <title>Movies</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
+{% if app.session.filme is defined %}
+    filme: {{ app.session.filme }}
+{% endif %}
+
+
 <h1 class="text-center text-dark"> Movies </h1>
 <table class="container justify-content-center table border border-2 border-dark table-bordered sort" id="movie-table">
     <thead>
@@ -31,6 +37,7 @@
             <td> {{ arr.year }} </td>
             <td> {{ arr.playtime }} </td>
             <td> {{ arr.fsk }} </td>
+            <td><form method="post"><input type="submit" value="Delete" name="delete" formaction="../index.php?delete={{ loop.index0 }}" ></form></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -40,7 +47,7 @@
 <div class="justify-content-center text-center">
     <h3>Add a new movie</h3>
 
-    <form method="post" action="../src/Movie.php" id="input-fields-for-new-movie">
+    <form method="post" action="../index.php" id="input-fields-for-new-movie">
         <table class="justify-content-center input-group">
             <tr>
                 <td><input type="text" name="title" class="input-field-movie" required placeholder="Title"></td>
@@ -66,8 +73,8 @@
         <input type="submit" name="submitEntry" value="Add Movie" class="btn btn-success">
     </form>
 
-    <form action="../src/deleteSession.php">
-        <input type="submit" value="Delete session" class="btn btn-danger">
+    <form action="../index.php" method="post">
+        <input type="submit" value="Delete session" class="btn btn-danger" name="deleteSession">
     </form>
 
 </div>
