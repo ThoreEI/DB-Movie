@@ -1,23 +1,23 @@
-.input-field-movie {
-    margin-left: 10px;
+h1 {
+    color: #ff051b;
+    margin-top: 30px;
+    margin-bottom:15px;
+    font-weight: bold;
 }
 
-.btn-success, .btn-danger {
-    margin-top: 10px;
+.text-center > button {
+    margin-top: 1em;
+    width: 12em;
 }
 
-.tbl-container {
-    width: 400px;
-    margin-top: 10px;
-    margin-left: 10px;
+body {
+    background-image: url("https://media.news.de/resources/images/0f/3f/3c970c4b195510f2fd9cf856f2ca.jpg");
+    background-repeat: no-repeat;
+    position: marker;
 }
 
-.bg-red {
-    background-color: red;
-    color: white;
+#movie-table {
+    width: 50%;
 }
 
-.bdr {
-    border-radius: 6px;
-    overflow: hidden;
-}
+

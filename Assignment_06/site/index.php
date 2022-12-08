@@ -49,8 +49,7 @@ function compare_movies($movie1, $movie2): int {
     if ($movie1->equals($movie2))
         return 0;
     global $sort_criterion;
-    $valid_values = ["title", "producer", "year", "playtime", "fsk"];
-    if (!in_array($sort_criterion, $valid_values))
+    if (!in_array($sort_criterion, ["title", "producer", "year", "playtime", "fsk"]))
         throw new InvalidArgumentException("Illegal argument: Sort criterion=" . $sort_criterion);
     return $movie1->$sort_criterion > $movie2->$sort_criterion ? 1 : -1;
 }
