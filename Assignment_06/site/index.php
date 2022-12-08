@@ -1,124 +1,63 @@
 <?php
-require_once __DIR__ . '\..\vendor\autoload.php';
-require_once "FilmClass.php";
-
+require_once "Movie.php";
+require_once "vendor/autoload.php";
 use Twig\Environment;
-use Twig\Extension\StringLoaderExtension;
-use Twig\TwigFilter;
 use Twig\Loader\FilesystemLoader;
-
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
+use Twig\Extension\StringLoaderExtension;
+ini_set('display_errors', 1);
 $loader = new FilesystemLoader('.');
 $twig = new Environment($loader);
 $twig->addExtension(new StringLoaderExtension());
 
-
-
 session_start();
+if (isset($_REQUEST["reset_session"]))
+    session_unset();
 
-if (isset($_POST["deleteSession"])) {
-    deleteSession();
+$movies = $_SESSION["movies"] ?? [
+        new Movie("The Grudge", "Takashi Shimizu", "2005", "91", "16"),
+        new Movie("Lucy", "Luc Besson", "2014", "89", "12"),
+        new Movie("Pulp Fiction", "Quentin Tarantino", "1994", "154", "16"),
+        new Movie("Inglorious Bastards", "Quentin Tarantino", "2009", "153", "16"),
+        new Movie("Reservoir Dogs", "Quentin Tarantino", "2005", "99", "18"),
+        new Movie("Blade Runner", "Ridley Scott", "1982", "117", "16") ];
+$_SESSION["movies"] = $movies;
+
+if (isset($_REQUEST["delete_movie"])) {
+    $index = $_REQUEST["delete_movie"];
+    array_splice($movies, $index, 1);
+    $_SESSION["movies"] = $movies;
 }
 
-if (isset($_SESSION['filme'])) {
-    $filme = $_SESSION['filme'];
-} else {
-    $filme = array(
-        new FilmClass("The Grudge", "Takashi Shimizu", "2005", "91", "16"),
-        new FilmClass("Lucy", "Luc Besson", "2014", "89", "12"),
-        new FilmClass("Pulp Fiction", "Quentin Tarantino", "1994", "154", "16"),
-        new FilmClass("Inglorious Bastards", "Quentin Tarantino", "2009", "153", "16"),
-        new FilmClass("Reservoir Dogs", "Quentin Tarantino", "2005", "99", "18"),
-        new FilmClass("Blade Runner", "Ridley Scott", "1982", "117", "16"),
-    );
-    $_SESSION['filme'] = $filme;
+if (isset($_REQUEST["add_movie"])) {
+    $movies[] = new Movie(
+        $_REQUEST["title"],
+        $_REQUEST["producer"],
+        $_REQUEST["year"],
+        $_REQUEST["playtime"],
+        $_REQUEST["fsk"]);
+    $_SESSION["movies"] = $movies;
 }
 
-if (isset($_POST["submitEntry"])) {
-    addMovie();
+$sort_criterion = $_REQUEST["sort_criterion"] ?? "title";
+$_SESSION["sort_criterion"] = $sort_criterion;
+uasort($movies, 'compare_movies');
+
+function compare_movies($movie1, $movie2): int {
+    if ($movie1->equals($movie2))
+        return 0;
+    global $sort_criterion;
+    $valid_values = ["title", "producer", "year", "playtime", "fsk"];
+    if (!in_array($sort_criterion, $valid_values))
+        throw new InvalidArgumentException("Illegal argument: Sort criterion=" . $sort_criterion);
+    return $movie1->$sort_criterion > $movie2->$sort_criterion ? 1 : -1;
 }
 
-if (isset($_POST["delete"])) {
-    // echo "delete";
-    deleteMovie();
+$twig->addGlobal('movies', $movies);
+try {
+    echo $twig->render('index.html.twig', ['movies' => $movies]);
+} catch (LoaderError|RuntimeError|SyntaxError $e) {
+    http_response_code(500);
 }
-
-if (isset($_POST["title"])) {
-    sortEntries("title");
-}
-
-if (isset($_POST["producer"])) {
-    sortEntries("producer");
-}
-
-if (isset($_POST["year"])) {
-    sortEntries("year");
-}
-
-if (isset($_POST["playtime"])) {
-    sortEntries("playtime");
-}
-
-if (isset($_POST["fsk"])) {
-    sortEntries("fsk");
-}
-
-function deleteMovie(): void
-{
-    $filme = $_SESSION['filme'];
-    $index = $_GET["delete"];
-    unset($filme[$index]);
-    // reorganize array
-    $filme = array_values($filme);
-    $_SESSION['filme'] = $filme;
-    header("Location: index.php");
-}
-
-function addMovie(): void {
-    global $filme;
-    $title = $_POST['title'];
-    $producer = $_POST['producer'];
-    $year = $_POST['year'];
-    $playtime = $_POST['playtime'];
-    $fsk = $_POST['fsk'];
-    $newMovie = new FilmClass($title, $producer, $year, $playtime, $fsk);
-    $filme[] = $newMovie;
-    $_SESSION['filme'] = $filme;
-}
-
-function deleteSession(): void {
-    unset($_SESSION['filme']);
-    session_destroy();
-}
-
-function sortEntries($sort): void
-{
-    $filme = $_SESSION['filme'];
-    if ($sort == "title") {
-        usort($filme, function ($a, $b) {
-            return strcmp(strtolower($a->title), strtolower($b->title));
-        });
-    } elseif ($sort == "producer") {
-        usort($filme, function ($a, $b) {
-            return strcmp(strtolower($a->producer), strtolower($b->producer));
-        });
-    } elseif ($sort == "year") {
-        usort($filme, function ($a, $b) {
-            return $a->year <=> $b->year;
-        });
-    } elseif ($sort == "playtime") {
-        usort($filme, function ($a, $b) {
-            return $a->playtime <=> $b->playtime;
-        });
-    } elseif ($sort == "fsk") {
-        usort($filme, function ($a, $b) {
-            return strcmp(strtolower($a->fsk), strtolower($b->fsk));
-        });
-    }
-    $_SESSION['filme'] = $filme;
-    header("Location: index.php");
-}
-
-$twig->addGlobal('filme', $filme);
-echo $twig->render('template/index.html.twig', []);
-
-
