@@ -1,83 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Movies</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/templateStyle.css">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <title>Movies</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/templateStyle.css">
 </head>
 <body>
-
-{% if app.session.filme is defined %}
-    filme: {{ app.session.filme }}
+{% if app.session.movies is defined %}
+    movies: {{ app.session.movies }}
 {% endif %}
-
-<h1 class="text-center text-dark"> Movies </h1>
-<table class="container justify-content-center table border border-2 border-dark table-bordered align-middle text-center" id="movie-table">
+<h1 class="text-center "> Movies </h1>
+<table class="container justify-content-center table border border-2 border-dark table-bordered sort align-middle text-center" id="movie-table">
     <thead>
     <tr>
-        <form method="post" action="../index.php">
+        <form method="post">
             <th></th>
-            <th><input type="submit" value="Title"  name="title"></th>
-            <th><input type="submit" value="Producer"  name="producer"></th>
-            <th><input type="submit" value="Year" name="year"></th>
-            <th><input type="submit" value="Playtime" name="playtime"></th>
-            <th><input type="submit" value="FSK" name="fsk"></th>
+            <th><button name="sort_criterion" value="title" class="btn bg-secondary">Title</button></th>
+            <th><button name="sort_criterion" value="producer" class="btn bg-secondary">Producer</button></th>
+            <th><button name="sort_criterion" value="year" class="btn bg-secondary">Year</button></th>
+            <th><button name="sort_criterion" value="playtime" class="btn bg-secondary">Playtime</button></th>
+            <th><button name="sort_criterion" value="fsk" class="btn bg-secondary">FSK</button></th>
             <th></th>
         </form>
     </tr>
     </thead>
-    <tbody id="tableBody">
-    {% for arr in filme %}
+    <tbody>
+    {% for movie in movies %}
         <tr>
-            <td> {{ loop.index0 }} </td>
-            <td> {{ arr.title }} </td>
-            <td> {{ arr.producer }} </td>
-            <td> {{ arr.year }} </td>
-            <td> {{ arr.playtime }} </td>
-            <td> {{ arr.fsk }} </td>
-            <td><form method="post"><input type="submit" value="Delete" name="delete" formaction="../index.php?delete={{ loop.index0 }}" ></form></td>
+            <td> {{ loop.index0 }}</td>
+            <td> {{ movie.title }}</td>
+            <td> {{ movie.producer }}</td>
+            <td> {{ movie.year }}</td>
+            <td> {{ movie.playtime }}</td>
+            <td> {{ movie.fsk }}</td>
+            <td>
+                <form method="post">
+                    <button name="delete_movie" value="{{ loop.index0 }}" class="btn bg-danger"> X </button>
+                </form>
+            </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
-
-
-<div class="justify-content-center text-center">
-    <h3>Add a new movie</h3>
-
-    <form method="post" action="../index.php" id="input-fields-for-new-movie">
-        <table class="justify-content-center input-group">
-            <tr>
-                <td><input type="text" name="title" class="input-field-movie form-control form-control-color w-100" required placeholder="Title"></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="producer" class="input-field-movie form-control form-control-color w-100" pattern="[a-zA-Z]+" required
-                           placeholder="Producer"></td>
-            </tr>
-            <tr>
-
-                <td><input type="text" name="year" class="input-field-movie form-control form-control-color w-100" pattern="[0-9]{4}" required
-                           placeholder="Year"></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="playtime" class="input-field-movie form-control form-control-color w-100" pattern="0*[1-9][0-9]*" required
-                           placeholder="Playtime"></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="fsk" class="input-field-movie form-control form-control-color w-100" pattern="0|6|12|16|18" required
-                           placeholder="FSK"></td>
-            </tr>
-        </table>
-        <input type="submit" name="submitEntry" value="Add Movie" class="btn btn-success">
-    </form>
-
-    <form action="../index.php" method="post">
-        <input type="submit" value="Delete session" class="btn btn-danger" name="deleteSession">
-    </form>
-
-</div>
-
+<form class="text-center" method="post">
+    <h2> Add a new movie</h2>
+    <table class="justify-content-center input-group">
+        <tr><td><label><input type="text" name="title" required placeholder="Title"></label></td></tr>
+        <tr><td><label><input type="text" name="producer" pattern="[a-zA-Z]+" required placeholder="Producer"></label></td></tr>
+        <tr><td><label><input type="text" name="year" pattern="[0-9]{4}" required placeholder="Year"></label></td></tr>
+        <tr><td><label><input type="text" name="playtime" pattern="0*[1-9][0-9]*" required placeholder="Playtime"></label></td></tr>
+        <tr><td><label><input type="text" name="fsk" pattern="0|6|12|16|18" required placeholder="FSK"></label></td></tr>
+    </table>
+    <button type="submit" name="add_movie" class="btn bg-success"> Add Movie </button>
+</form>
+<form class="text-center" method="post">
+    <button type="submit" name="reset_session" class="btn btn-danger"> Delete session </button>
+</form>
 </body>
 </html>
