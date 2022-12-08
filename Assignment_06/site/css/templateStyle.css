@@ -1,6 +1,5 @@
-h1 {
-    color: #ff051b;
-    margin-top: 30px;
+h1, h2 {
+    margin-top: 15px;
     margin-bottom:15px;
     font-weight: bold;
 }
@@ -8,16 +7,6 @@ h1 {
 .text-center > button {
     margin-top: 1em;
     width: 12em;
-}
-
-body {
-    background-image: url("https://media.news.de/resources/images/0f/3f/3c970c4b195510f2fd9cf856f2ca.jpg");
-    background-repeat: no-repeat;
-    position: marker;
-}
-
-#movie-table {
-    width: 50%;
 }
 
 
