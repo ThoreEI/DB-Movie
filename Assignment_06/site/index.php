@@ -1,15 +1,16 @@
 <?php
-require_once "Movie.php";
-require_once "../vendor/autoload.php";
+require_once  __DIR__ . "../src/php/Movie.php";
+require_once __DIR__ . "../src/vendor/autoload.php";
 
 use Twig\Environment;
 use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Extension\StringLoaderExtension;
 use Twig\Loader\FilesystemLoader;
 
 ini_set('display_errors', 1);
-$loader = new FilesystemLoader('.');
+$loader = new FilesystemLoader('../src');
 $twig = new Environment($loader);
 $twig->addExtension(new StringLoaderExtension());
 
@@ -57,7 +58,7 @@ function compare_movies($movie1, $movie2): int {
 
 $twig->addGlobal('movies', $movies);
 try {
-    echo $twig->render('template/index.html.twig', ['movies' => $movies]);
+    echo $twig->render('index.html.twig', ['movies' => $movies]);
 } catch (LoaderError|RuntimeError|SyntaxError $e) {
     http_response_code(500);
 }
