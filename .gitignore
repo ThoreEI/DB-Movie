@@ -6,3 +6,6 @@
 /dataSources/
 /dataSources.local.xml
 /.idea/
+*/composer.phar
+*/composer.lock
+*/vendor/
