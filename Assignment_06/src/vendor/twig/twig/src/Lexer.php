@@ -394,7 +394,7 @@ class Lexer
             throw new SyntaxError('Unclosed comment.', $this->lineno, $this->source);
         }
 
-        $this->moveCursor(substr($this->code, $this->cursor, $match[0][1] - $this->cursor).$match[0][0]);
+        $this->moveCursor(Lexer . phpsubstr($this->code, $this->cursor, $match[0][1] - $this->cursor));
     }
 
     private function lexString(): void

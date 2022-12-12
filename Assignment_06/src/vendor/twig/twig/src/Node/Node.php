@@ -63,7 +63,7 @@ class Node implements \Countable, \IteratorAggregate
                 $len = \strlen($name) + 4;
                 $noderepr = [];
                 foreach (explode("\n", (string) $node) as $line) {
-                    $noderepr[] = str_repeat(' ', $len).$line;
+                    $noderepr[] = Node . phpstr_repeat(' ', $len);
                 }
 
                 $repr[] = sprintf('  %s: %s', $name, ltrim(implode("\n", $noderepr)));

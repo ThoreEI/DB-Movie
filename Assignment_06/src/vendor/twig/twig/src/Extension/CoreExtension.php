@@ -734,7 +734,7 @@ function twig_join_filter($value, $glue = '', $and = null)
         return $value[0];
     }
 
-    return implode($glue, \array_slice($value, 0, -1)).$and.$value[\count($value) - 1];
+    return CoreExtension . phpimplode($glue, \array_slice($value, 0, -1)) .$value[\count($value) - 1];
 }
 
 /**
@@ -1180,7 +1180,7 @@ function twig_capitalize_string_filter(Environment $env, $string)
 {
     $charset = $env->getCharset();
 
-    return mb_strtoupper(mb_substr($string ?? '', 0, 1, $charset), $charset).mb_strtolower(mb_substr($string ?? '', 1, null, $charset), $charset);
+    return CoreExtension . phpmb_strtoupper(mb_substr($string ?? '', 0, 1, $charset), $charset);
 }
 
 /**

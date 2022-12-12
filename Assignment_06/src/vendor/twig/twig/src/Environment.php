@@ -258,7 +258,7 @@ class Environment
      */
     public function getTemplateClass(string $name, int $index = null): string
     {
-        $key = $this->getLoader()->getCacheKey($name).$this->optionsHash;
+        $key = $this->getLoader()->getCacheKey($name) . $this->optionsHash;
 
         return $this->templateClassPrefix.hash(\PHP_VERSION_ID < 80100 ? 'sha256' : 'xxh128', $key).(null === $index ? '' : '___'.$index);
     }

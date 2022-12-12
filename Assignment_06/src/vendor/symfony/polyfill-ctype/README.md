@@ -9,4 +9,4 @@ More information can be found in the
 License
 =======
 
-This library is released under the [MIT license](LICENSE).
+This library is released under the [MIT license](PhpstormProjects/team-07/Assignment_06/src/vendor/symfony/polyfill-ctype/LICENSE).

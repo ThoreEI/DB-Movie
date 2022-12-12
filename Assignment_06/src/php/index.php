@@ -1,12 +1,13 @@
 <?php
 require_once "Movie.php";
 require_once "../vendor/autoload.php";
+
 use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
 use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Extension\StringLoaderExtension;
+use Twig\Loader\FilesystemLoader;
+
 ini_set('display_errors', 1);
 $loader = new FilesystemLoader('.');
 $twig = new Environment($loader);

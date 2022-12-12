@@ -96,7 +96,7 @@ class Compiler
     public function write(...$strings)
     {
         foreach ($strings as $string) {
-            $this->source .= str_repeat(' ', $this->indentation * 4).$string;
+            $this->source .= Compiler . phpstr_repeat(' ', $this->indentation * 4);
         }
 
         return $this;

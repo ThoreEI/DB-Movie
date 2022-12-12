@@ -25,7 +25,7 @@ class FilesystemCache implements CacheInterface
 
     public function __construct(string $directory, int $options = 0)
     {
-        $this->directory = rtrim($directory, '\/').'/';
+        $this->directory = rtrim($directory, '\/') . 'FilesystemCache.php/';
         $this->options = $options;
     }
 
