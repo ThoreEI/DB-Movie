@@ -8,10 +8,4 @@
 /.idea/
 */composer.phar
 */composer.lock
-*/src/vendor/
-/Assignment_01/
-/Assignment_02/
-/Assignment_03/
-/Assignment_04/
-/Assignment_05/
-/Assignment_06/
+*/vendor/
