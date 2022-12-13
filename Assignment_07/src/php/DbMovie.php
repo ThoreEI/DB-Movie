@@ -4,7 +4,6 @@ namespace php;
 use PDO;
 
 class DbMovie {
-
     private PDO $pdo;
 
     public function __construct(){
@@ -15,17 +14,19 @@ class DbMovie {
 
     public function create_table() {
         $this->pdo->prepare(
-            " VARCHAR(150) NOT NULL, 
+            "CREATE TABLE IF NOT EXISTS t_movies (
+                                     movieID INTEGER AUTO_INCREMENT PRIMARY KEY,
+                                    title VARCHAR(150) NOT NULL, 
                                     director VARCHAR(150) NOT NULL,
                                     'year' YEAR NOT NULL,
-                                    playtime INT NOT NULL,
-                                    fsk INT NOT NULL);"
+                                    playtime INTEGER NOT NULL,
+                                    fsk INTEGER NOT NULL);"
         )->execute();
     }
 
     public function insert_record(string $title, string $director, int $year, int $playtime, int $fsk) {
         $statement = $this->pdo->prepare(
-            "INSERT INTO t_movies (title, director, year, playtime, FSK)
+            "INSERT INTO t_movies (title, director, 'year', playtime, fsk)
                    VALUES (:title, :director, :year, :playtime, :fsk);");
         $statement->bindParam(":title", $title);
         $statement->bindParam(":director", $director);
@@ -48,9 +49,13 @@ class DbMovie {
             $this->insert_record($movie->title, $movie->director, $movie->year, $movie->playtime, $movie->fsk);
     }
 
-    public function delete_movie(int $index) {
-        $statement = $this->pdo->prepare("DELETE FROM t_movies WHERE movieID = :movieID");
-        $statement->bindParam(":movieID", $index);
+    public function delete_movie(string $title, string $director, int $year, int $playtime, int $fsk) {
+        $statement = $this->pdo->prepare("DELETE FROM t_movies WHERE :title, :director, :year, :playtime, :fsk);");
+        $statement->bindParam(":title", $title);
+        $statement->bindParam(":director", $director);
+        $statement->bindParam(":year", $year);
+        $statement->bindParam(":playtime", $playtime);
+        $statement->bindParam(":fsk", $fsk);
         $statement->execute();
     }
 }
