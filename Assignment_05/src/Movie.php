@@ -30,11 +30,11 @@ if (isset($_POST["delete"])) {
 function addMovie(): void {
     global $entries;
     $title = $_POST['title'];
-    $producer = $_POST['producer'];
+    $director = $_POST['director'];
     $year = $_POST['year'];
     $playtime = $_POST['playtime'];
     $fsk = $_POST['fsk'];
-    $newMovie = new Film($title, $producer, $year, $playtime, $fsk);
+    $newMovie = new Film($title, $director, $year, $playtime, $fsk);
     $entries[] = $newMovie;
     $_SESSION['entries'] = $entries;
 }

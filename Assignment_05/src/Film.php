@@ -2,14 +2,14 @@
 
 class Film {
     public $title;
-    public $producer;
+    public $director;
     public $year;
     public $playtime;
     public $fsk;
 
-    public function __construct($title, $producer, $year, $playtime, $fsk) {
+    public function __construct($title, $director, $year, $playtime, $fsk) {
         $this->title = $title;
-        $this->producer = $producer;
+        $this->director = $director;
         $this->year = $year;
         $this->playtime = $playtime;
         $this->fsk = $fsk;

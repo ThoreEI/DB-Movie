@@ -1,7 +1,7 @@
 <?php
 require '../src/Movie.php';
 session_start();
-$valid_values_to_sort_by = ["title", "producer", "year", "playtime", "fsk"];
+$valid_values_to_sort_by = ["title", "director", "year", "playtime", "fsk"];
 
 $value_to_sort_by = $_GET["value_to_sort_by"];
 if (in_array($value_to_sort_by, $valid_values_to_sort_by))
@@ -16,9 +16,9 @@ function sortEntries($sort): void
         usort($entries, function ($a, $b) {
             return strcmp($a->title, $b->title);
         });
-    } elseif ($sort == "producer") {
+    } elseif ($sort == "director") {
         usort($entries, function ($a, $b) {
-            return strcmp($a->producer, $b->producer);
+            return strcmp($a->director, $b->director);
         });
     } elseif ($sort == "year") {
         usort($entries, function ($a, $b) {

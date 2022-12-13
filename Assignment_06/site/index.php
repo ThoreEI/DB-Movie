@@ -1,6 +1,6 @@
 <?php
-require_once  __DIR__ . "../src/php/Movie.php";
-require_once __DIR__ . "../src/vendor/autoload.php";
+require_once "../src/vendor/autoload.php";
+require_once "../src/php/Movie.php";
 
 use Twig\Environment;
 use Twig\Error\LoaderError;
@@ -10,7 +10,7 @@ use Twig\Extension\StringLoaderExtension;
 use Twig\Loader\FilesystemLoader;
 
 ini_set('display_errors', 1);
-$loader = new FilesystemLoader('../src');
+$loader = new FilesystemLoader('../src/');
 $twig = new Environment($loader);
 $twig->addExtension(new StringLoaderExtension());
 
@@ -36,7 +36,7 @@ if (isset($_REQUEST["delete_movie"])) {
 if (isset($_REQUEST["add_movie"])) {
     $movies[] = new Movie(
         $_REQUEST["title"],
-        $_REQUEST["producer"],
+        $_REQUEST["director"],
         $_REQUEST["year"],
         $_REQUEST["playtime"],
         $_REQUEST["fsk"]);
@@ -51,7 +51,7 @@ function compare_movies($movie1, $movie2): int {
     if ($movie1->equals($movie2))
         return 0;
     global $sort_criterion;
-    if (!in_array($sort_criterion, ["title", "producer", "year", "playtime", "fsk"]))
+    if (!in_array($sort_criterion, ["title", "director", "year", "playtime", "fsk"]))
         throw new InvalidArgumentException("Illegal argument: Sort criterion=" . $sort_criterion);
     return $movie1->$sort_criterion > $movie2->$sort_criterion ? 1 : -1;
 }

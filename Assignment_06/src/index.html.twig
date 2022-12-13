@@ -17,7 +17,7 @@
         <form method="post">
             <th></th>
             <th><button name="sort_criterion" value="title" class="btn bg-secondary">Title</button></th>
-            <th><button name="sort_criterion" value="producer" class="btn bg-secondary">Producer</button></th>
+            <th><button name="sort_criterion" value="director" class="btn bg-secondary">Director</button></th>
             <th><button name="sort_criterion" value="year" class="btn bg-secondary">Year</button></th>
             <th><button name="sort_criterion" value="playtime" class="btn bg-secondary">Playtime</button></th>
             <th><button name="sort_criterion" value="fsk" class="btn bg-secondary">FSK</button></th>
@@ -30,7 +30,7 @@
         <tr>
             <td> {{ loop.index0 }}</td>
             <td> {{ movie.title }}</td>
-            <td> {{ movie.producer }}</td>
+            <td> {{ movie.director }}</td>
             <td> {{ movie.year }}</td>
             <td> {{ movie.playtime }}</td>
             <td> {{ movie.fsk }}</td>
@@ -47,7 +47,7 @@
     <h2> Add movie</h2>
     <table class="justify-content-center input-group">
         <tr><td><label><input type="text" name="title" required placeholder="Title"></label></td></tr>
-        <tr><td><label><input type="text" name="producer" pattern="[a-zA-Z]+" required placeholder="Producer"></label></td></tr>
+        <tr><td><label><input type="text" name="director" pattern="[a-zA-Z]+" required placeholder="Director"></label></td></tr>
         <tr><td><label><input type="text" name="year" pattern="[0-9]{4}" required placeholder="Year"></label></td></tr>
         <tr><td><label><input type="text" name="playtime" pattern="0*[1-9][0-9]*" required placeholder="Playtime"></label></td></tr>
         <tr><td><label><input type="text" name="fsk" pattern="0|6|12|16|18" required placeholder="FSK"></label></td></tr>

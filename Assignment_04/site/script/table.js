@@ -2,37 +2,37 @@ const table = document.getElementById("movie-table");
 const tableBody = document.getElementById("tableBody");
 let entries = {
     "The_Grudge": {
-        "producer": "Takashi Shimizu",
+        "director": "Takashi Shimizu",
         "year": "2005",
         "playtime": "91",
         "fsk": "16"
     },
     "Lucy": {
-        "producer": "Luc Besson",
+        "director": "Luc Besson",
         "year": "2014",
         "playtime": "89",
         "fsk": "12"
     },
     "Pulp_Fiction": {
-        "producer": "Quentin Tarantino",
+        "director": "Quentin Tarantino",
         "year": "1994",
         "playtime": "154",
         "fsk": "16"
     },
     "Inglorious_Bastards": {
-        "producer": "Quentin Tarantino",
+        "director": "Quentin Tarantino",
         "year": "2009",
         "playtime": "153",
         "fsk": "16"
     },
     "Reservoir_Dogs": {
-        "producer": "Quentin Tarantino",
+        "director": "Quentin Tarantino",
         "year": "1992",
         "playtime": "99",
         "fsk": "18"
     },
     "Blade_Runner": {
-        "producer": "Ridley Scott",
+        "director": "Ridley Scott",
         "year": "1982",
         "playtime": "117",
         "fsk": "16"
@@ -47,7 +47,7 @@ function init() {
     keys.forEach(function (key) {
         let entry = [];
         entry.push(key.replace("_", " "));
-        entry.push(entries[key]["producer"]);
+        entry.push(entries[key]["director"]);
         entry.push(entries[key]["year"]);
         entry.push(entries[key]["playtime"]);
         entry.push(entries[key]["fsk"]);
@@ -76,7 +76,7 @@ function createMovieTable() {
 
 function addMovie() {
     let title = document.getElementById("inputTitle").value;
-    let producer = document.getElementById("inputProducer").value;
+    let director = document.getElementById("inputdirector").value;
     let year = document.getElementById("inputYear").value;
     let playtime = document.getElementById("inputPlaytime").value;
     let fsk = document.getElementById("inputFSK").value;
@@ -85,13 +85,13 @@ function addMovie() {
     const validYear = new RegExp(/\d{4}/)
 
     // check if all input fields are correctly filled
-    if (title === "" || producer === "" || year === "" || playtime === "" || fsk === "") {
+    if (title === "" || director === "" || year === "" || playtime === "" || fsk === "") {
         alert("Please fill out all fields!");
         return;
     }
 
-    if (producer.match(digits)) {
-        alert("Invalid input for producer.")
+    if (director.match(digits)) {
+        alert("Invalid input for director.")
         return;
     }
 
@@ -111,7 +111,7 @@ function addMovie() {
     }
 
     // create a new row with the input values
-    let newEntry = [title, producer, year, playtime, fsk, ""];
+    let newEntry = [title, director, year, playtime, fsk, ""];
     const tableBody = document.getElementById("tableBody");
     const rowBody = document.createElement("tr");
     newEntry.forEach(function createCell(cellData) {
@@ -131,7 +131,7 @@ function addMovie() {
 function clearInputs() {
     // clear the input fields
     document.getElementById("inputTitle").value = "";
-    document.getElementById("inputProducer").value = "";
+    document.getElementById("inputdirector").value = "";
     document.getElementById("inputYear").value = "";
     document.getElementById("inputPlaytime").value = "";
     document.getElementById("inputFSK").value = "";
