@@ -1,7 +1,7 @@
 <?php
-require_once "../src/vendor/autoload.php";
 require_once "../src/php/Movie.php";
 require_once "../src/php/DbMovie.php";
+require_once "../src/vendor/autoload.php";
 use php\DbMovie;
 use Twig\Environment;
 use Twig\Error\LoaderError;
