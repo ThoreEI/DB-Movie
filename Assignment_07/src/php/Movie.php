@@ -2,6 +2,7 @@
 namespace php;
 
 class Movie {
+    public string $movieID;
     public string $title;
     public string $director;
     public int $year;

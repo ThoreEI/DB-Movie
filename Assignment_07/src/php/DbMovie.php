@@ -50,15 +50,13 @@ class DbMovie {
             $this->insert_record($movie->title, $movie->director, $movie->year, $movie->playtime, $movie->fsk);
     }
 
-    public function  load_movies() {
-        return $this->pdo->query("SELECT * FROM t_movies ORDER BY title");
+    public function load_movies($sort_criterion) {
+        return $this->pdo->query("SELECT * FROM t_movies ORDER BY $sort_criterion");
     }
 
-
-
-    public function delete_movie(string $title) {
-        $statement = $this->pdo->prepare("DELETE FROM t_movies WHERE title = :title");
-        $statement->bindParam(":title", $title);
+    public function delete_movie(string $movieID) {
+        $statement = $this->pdo->prepare("DELETE FROM t_movies WHERE movieID = :movieID");
+        $statement->bindParam(":movieID", $movieID);
         $statement->execute();
     }
 }

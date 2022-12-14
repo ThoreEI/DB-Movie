@@ -13,11 +13,11 @@
     <tr>
         <form method="post">
             <th></th>
-            <th><button class="btn bg-secondary">Title</button></th>
-            <th><button class="btn bg-secondary">Director</button></th>
-            <th><button class="btn bg-secondary">Year</button></th>
-            <th><button class="btn bg-secondary">Playtime</button></th>
-            <th><button class="btn bg-secondary">FSK</button></th>
+            <th><button formaction="index.php?sort=title" class="btn bg-secondary">Title</button></th>
+            <th><button formaction="index.php?sort=director"class="btn bg-secondary">Director</button></th>
+            <th><button formaction="index.php?sort=year"class="btn bg-secondary">Year</button></th>
+            <th><button formaction="index.php?sort=playtime"class="btn bg-secondary">Playtime</button></th>
+            <th><button formaction="index.php?sort=fsk"class="btn bg-secondary">FSK</button></th>
             <th></th>
         </form>
     </tr>
@@ -34,7 +34,7 @@
 
             <td>
                 <form method="post">
-                    <button name="delete_movie" value="{{movie.title}}" class="btn bg-danger"> X </button>
+                    <button name="delete_movie" value="{{movie.movieID}}" class="btn bg-danger"> X </button>
                 </form>
             </td>
         </tr>

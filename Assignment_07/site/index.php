@@ -17,14 +17,21 @@ $data_base = new DbMovie();
 session_start();
 if (isset($_REQUEST["add_movie"]))
     $data_base->insert_record($_REQUEST["title"], $_REQUEST["director"], $_REQUEST["year"], $_REQUEST["playtime"], $_REQUEST["fsk"]);
+
 if (isset($_REQUEST["delete_movie"])) {
     $movie_to_delete = $_REQUEST["delete_movie"];
     $data_base->delete_movie($movie_to_delete);
 }
+
 if (isset($_REQUEST["reset_session"]))
     session_unset();
 
-$movies = $data_base->load_movies()->fetchAll();
+if (isset($_REQUEST["sort"])) {
+    $sort_by = $_REQUEST["sort"];
+    $movies = $data_base->load_movies($sort_by)->fetchAll();
+} else
+    $movies = $data_base->load_movies("title")->fetchAll();
+
 $twig->addGlobal('movies', $movies);
 try {
     echo $twig->render('index.html.twig', ['movies' => $movies]);
