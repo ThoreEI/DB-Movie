@@ -51,7 +51,9 @@ class DbMovie {
     }
 
     public function load_movies($sort_criterion) {
-        return $this->pdo->query("SELECT * FROM t_movies ORDER BY $sort_criterion");
+        if (!in_array($sort_criterion, ["title", "director", "year", "playtime", "fsk"]))
+            $sort_criterion = "title";
+        return $this->pdo->query("SELECT * FROM t_movies ORDER BY $sort_criterion")->fetchAll();
     }
 
     public function delete_movie(string $movieID) {

@@ -19,18 +19,17 @@ if (isset($_REQUEST["add_movie"]))
     $data_base->insert_record($_REQUEST["title"], $_REQUEST["director"], $_REQUEST["year"], $_REQUEST["playtime"], $_REQUEST["fsk"]);
 
 if (isset($_REQUEST["delete_movie"])) {
-    $movie_to_delete = $_REQUEST["delete_movie"];
-    $data_base->delete_movie($movie_to_delete);
+    $movie_id = $_REQUEST["delete_movie"];
+    $data_base->delete_movie($movie_id);
 }
-
 if (isset($_REQUEST["reset_session"]))
     session_unset();
 
 if (isset($_REQUEST["sort"])) {
     $sort_by = $_REQUEST["sort"];
-    $movies = $data_base->load_movies($sort_by)->fetchAll();
+    $movies = $data_base->load_movies($sort_by);
 } else
-    $movies = $data_base->load_movies("title")->fetchAll();
+    $movies = $data_base->load_movies("title");
 
 $twig->addGlobal('movies', $movies);
 try {
