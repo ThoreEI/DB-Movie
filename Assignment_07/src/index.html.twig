@@ -13,7 +13,8 @@
     <tr>
         <form method="post">
             <th><button name="order" value="asc" class="btn btn-table" id="direction_button">▲</button>
-                <button name="order" value="desc" class="btn btn-table" id="direction_button">▼</button></th>
+                <button name="order" value="desc" class="btn btn-table" id="direction_button">▼</button>
+            </th>
             <th><button formaction="index.php?sort_by=title" class="btn btn-table" id="sort_button" >Title</button></th>
             <th><button formaction="index.php?sort_by=director" class="btn btn-table" id="sort_button">Director</button></th>
             <th><button formaction="index.php?sort_by=year" class="btn btn-table" id="sort_button">Year</button></th>
@@ -55,10 +56,10 @@
         <tr><td><label><input type="text" name="playtime" pattern="0*[1-9][0-9]*" placeholder="Playtime" required></label></td></tr>
         <tr><td><label><input type="text" name="fsk" pattern="0|6|12|16|18" placeholder="FSK" required></label></td></tr>
     </table>
-    <button type="submit" name="add_movie" id="add_movie_button" class="btn bg-success"> Add Movie </button>
+    <button type="submit" name="add_movie" id="add_movie_button" class="btn bg-success">Add Movie</button>
 </form>
 <form class="text-center" method="post">
-    <button type="submit" name="reset_session" id="reset_session_button" class="btn btn-danger"> Reset Session </button>
+    <button type="submit" name="reset_session" id="reset_session_button" class="btn btn-danger">Reset Session</button>
 </form>
 </body>
 </html>

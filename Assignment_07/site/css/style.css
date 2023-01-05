@@ -1,0 +1,69 @@
+h1, h2 {
+    margin: 15px 15px;
+    font-weight: bold;
+}
+
+#sort_button, #direction_button, #delete_button {
+    background-color: black;
+}
+
+button:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 4px #111;
+    transition: .3s;
+}
+
+#sort_button {
+    color: dodgerblue;
+    border: solid dodgerblue 1px;
+}
+
+#direction_button {
+    background-color: #022d02;
+    color: #0af40a;
+    border: solid #0af40a 1px;
+}
+
+#add_movie_button, #reset_session_button {
+    margin-top: 10px;
+    width: 11em;
+}
+
+#delete_button {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: 2px solid #ff051b;
+    background-color: #000000;
+    cursor: pointer;
+    box-shadow: 0 0 10px #333;
+    overflow: hidden;
+    transition: .3s;
+}
+
+svg {
+    color: rgb(231, 50, 50);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+}
+
+span {
+    width: 150px;
+    position: absolute;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    color: rgb(231, 50, 50);
+    font-weight: 600;
+    transition: .3s;
+}
+
+
+
+
+
+
+
