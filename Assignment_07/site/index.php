@@ -9,31 +9,23 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Extension\StringLoaderExtension;
 use Twig\Loader\FilesystemLoader;
-$loader = new FilesystemLoader('../src/');
-$twig = new Environment($loader);
+$twig = new Environment(new FilesystemLoader('../src/'));
 $twig->addExtension(new StringLoaderExtension());
 $data_base = new DbMovie();
-
 session_start();
-if (isset($_REQUEST["add_movie"]))
-    $data_base->insert_record($_REQUEST["title"], $_REQUEST["director"], $_REQUEST["year"], $_REQUEST["playtime"], $_REQUEST["fsk"]);
 
-if (isset($_REQUEST["delete_movie"])) {
-    $movie_id = $_REQUEST["delete_movie"];
-    $data_base->delete_movie($movie_id);
-}
-if (isset($_REQUEST["reset_session"]))
+if (isset($_POST["add_movie"]))
+    $data_base->insert_record($_POST["title"], $_POST["director"], $_POST["year"], $_POST["playtime"], $_POST["fsk"]);
+
+if (isset($_POST["delete_movie"]))
+    $data_base->delete_movie($_POST["delete_movie"]);
+
+if (isset($_POST["reset_session"]))
     session_unset();
 
-if (isset($_REQUEST["sort"])) {
-    $sort_by = $_REQUEST["sort"];
-    $movies = $data_base->load_movies($sort_by);
-} else
-    $movies = $data_base->load_movies("title");
-
-$twig->addGlobal('movies', $movies);
+$movies = $data_base->load_movies($_GET["sort_by"] ?? "title", $_POST["order"] ?? "ASC");
 try {
     echo $twig->render('index.html.twig', ['movies' => $movies]);
 } catch (LoaderError|RuntimeError|SyntaxError $e) {
-    http_response_code(500);
+    echo $e->getMessage();
 }
