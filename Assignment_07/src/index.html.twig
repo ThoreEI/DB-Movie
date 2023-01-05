@@ -8,7 +8,6 @@
 </head>
 <body>
 <h1 class="text-center">Movie Database</h1>
-
 <table class="container justify-content-center table border border-2 border-dark table-bordered align-middle text-center">
     <thead>
     <tr>
@@ -42,18 +41,17 @@
     {% endfor %}
     </tbody>
 </table>
-
-<form id="input_new_movie" method="post">
-    <h2>New Movie</h2>
-    <table class="justify-content-center input-group">
-        <tr><td><label><input type="text" name="title" placeholder="Title" required></label></td></tr>
-        <tr><td><label><input type="text" name="director" pattern="[a-zA-Z]+" placeholder="Director" required></label></td></tr>
-        <tr><td><label><input type="text" name="year" pattern="[0-9]{4}" placeholder="Year" required></label></td></tr>
-        <tr><td><label><input type="text" name="playtime" pattern="0*[1-9][0-9]*" placeholder="Playtime" required></label></td></tr>
-        <tr><td><label><input type="text" name="fsk" pattern="0|6|12|16|18" placeholder="FSK" required></label></td></tr>
-    </table>
-    <button type="submit" name="add_movie" id="add_movie_button" class="btn bg-success"> Add Movie </button>
-</form>
+    <form class="text-center" method="post">
+            <h2>New Movie</h2>
+        <table class="justify-content-center input-group">
+            <tr><td><label><input type="text" name="title" placeholder="Title" required></label></td></tr>
+            <tr><td><label><input type="text" name="director" pattern="[a-zA-Z]+" placeholder="Director" required></label></td></tr>
+            <tr><td><label><input type="text" name="year" pattern="[0-9]{4}" placeholder="Year" required></label></td></tr>
+            <tr><td><label><input type="text" name="playtime" pattern="0*[1-9][0-9]*" placeholder="Playtime" required></label></td></tr>
+            <tr><td><label><input type="text" name="fsk" pattern="0|6|12|16|18" placeholder="FSK" required></label></td></tr>
+        </table>
+        <button type="submit" name="add_movie" id="add_movie_button" class="btn bg-success"> Add Movie </button>
+    </form>
 <form class="text-center" method="post">
     <button type="submit" name="reset_session" id="reset_session_button" class="btn btn-danger"> Reset Session </button>
 </form>

@@ -1,7 +1,6 @@
 <?php
 namespace php;
 use PDO;
-
 class DbMovie {
     private PDO $pdo;
     public function __construct() {
@@ -29,8 +28,6 @@ class DbMovie {
 
     public function insert_default_movies() {
         $movies = [
-            new Movie("AAA", "AAA", "1111", "222", "12"),
-            new Movie("B", "B Shimizu", "2005", "91", "16"),
             new Movie("The Grudge", "Takashi Shimizu", "2005", "91", "16"),
             new Movie("Lucy", "Luc Besson", "2014", "89", "12"),
             new Movie("Pulp Fiction", "Quentin Tarantino", "1994", "154", "16"),
@@ -47,8 +44,6 @@ class DbMovie {
                                                 VALUES (:title, :director, :year, :playtime, :fsk);");
         $statement->execute([":title"=>$title, ":director"=>$director, ":year"=>$year, ":playtime"=>$playtime, ":fsk"=>$fsk]);
     }
-
-
 
     public function delete_movie(string $movieID) {
         $statement = $this->pdo->prepare("DELETE FROM t_movies WHERE movieID = :movieID");

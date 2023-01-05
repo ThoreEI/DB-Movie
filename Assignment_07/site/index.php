@@ -23,7 +23,7 @@ if (isset($_POST["delete_movie"]))
 if (isset($_POST["reset_session"]))
     session_unset();
 
-$movies = $data_base->load_movies($_GET["sort_by"] ?? "title", $_POST["order"] ?? "ASC");
+$movies = $data_base->load_movies($_GET["sort_by"] ?? "title", $_POST["order"] ?? "asc");
 try {
     echo $twig->render('index.html.twig', ['movies' => $movies]);
 } catch (LoaderError|RuntimeError|SyntaxError $e) {
