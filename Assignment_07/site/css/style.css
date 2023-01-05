@@ -4,13 +4,18 @@ h1, h2 {
 }
 
 #sort_button, #direction_button, #delete_button {
+    margin: auto;
     background-color: black;
+}
+
+input {
+    margin-bottom: 5px;
 }
 
 button:hover {
     transform: scale(1.2);
     box-shadow: 0 0 4px #111;
-    transition: .3s;
+    transition: .2s;
 }
 
 #sort_button {
@@ -19,9 +24,8 @@ button:hover {
 }
 
 #direction_button {
-    background-color: #022d02;
-    color: #0af40a;
-    border: solid #0af40a 1px;
+    color: #64b439;
+    border: solid #64b439 1px;
 }
 
 #add_movie_button, #reset_session_button {
@@ -48,16 +52,6 @@ svg {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: .3s;
-}
-
-span {
-    width: 150px;
-    position: absolute;
-    opacity: 0;
-    transform: translate(-50%, -50%);
-    color: rgb(231, 50, 50);
-    font-weight: 600;
     transition: .3s;
 }
 
