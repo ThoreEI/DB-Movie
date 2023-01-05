@@ -15,12 +15,4 @@ class Movie {
         $this->playtime = $playtime;
         $this->fsk = $fsk;
     }
-
-    function equals(Movie $other): bool {
-        return gettype($this) == gettype($other)
-            && $this->title == $other->title
-            && $this->year == $other->year
-            && $this->playtime == $other->playtime
-            && $this->fsk == $other->fsk;
-    }
 }

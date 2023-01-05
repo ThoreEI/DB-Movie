@@ -3,6 +3,7 @@ namespace php;
 use PDO;
 class DbMovie {
     private PDO $pdo;
+
     public function __construct() {
         $this->pdo = new PDO("sqlite:".join(DIRECTORY_SEPARATOR, [__DIR__,"..", "db", "movies.db"]));
         $this->create_table();

@@ -12,8 +12,8 @@
     <thead>
     <tr>
         <form method="post">
-            <th><button name="order" value="asc" class="btn btn-table" id="sort_button">▲</button>
-                <button name="order" value="desc" class="btn btn-table" id="sort_button">▼</button></th>
+            <th><button name="order" value="asc" class="btn btn-table" id="direction_button">▲</button>
+                <button name="order" value="desc" class="btn btn-table" id="direction_button">▼</button></th>
             <th><button formaction="index.php?sort_by=title" class="btn btn-table" id="sort_button" >Title</button></th>
             <th><button formaction="index.php?sort_by=director" class="btn btn-table" id="sort_button">Director</button></th>
             <th><button formaction="index.php?sort_by=year" class="btn btn-table" id="sort_button">Year</button></th>
@@ -34,24 +34,29 @@
             <td> {{ movie.fsk }}</td>
             <td>
                 <form method="post">
-                    <button name="delete_movie" value="{{movie.movieID}}" class="btn btn-table" id="delete_button"> X </button>
+                    <button name="delete_movie" value="{{movie.movieID}}" class="btn btn-table" id="delete_button">
+                        <span>Confirm Delete</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </button>
                 </form>
             </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
-    <form class="text-center" method="post">
-            <h2>New Movie</h2>
-        <table class="justify-content-center input-group">
-            <tr><td><label><input type="text" name="title" placeholder="Title" required></label></td></tr>
-            <tr><td><label><input type="text" name="director" pattern="[a-zA-Z]+" placeholder="Director" required></label></td></tr>
-            <tr><td><label><input type="text" name="year" pattern="[0-9]{4}" placeholder="Year" required></label></td></tr>
-            <tr><td><label><input type="text" name="playtime" pattern="0*[1-9][0-9]*" placeholder="Playtime" required></label></td></tr>
-            <tr><td><label><input type="text" name="fsk" pattern="0|6|12|16|18" placeholder="FSK" required></label></td></tr>
-        </table>
-        <button type="submit" name="add_movie" id="add_movie_button" class="btn bg-success"> Add Movie </button>
-    </form>
+<form class="text-center" method="post">
+    <h2>New Movie</h2>
+    <table class="justify-content-center input-group">
+        <tr><td><label><input type="text" name="title" placeholder="Title" required></label></td></tr>
+        <tr><td><label><input type="text" name="director" pattern="[a-zA-Z]+" placeholder="Director" required></label></td></tr>
+        <tr><td><label><input type="text" name="year" pattern="[0-9]{4}" placeholder="Year" required></label></td></tr>
+        <tr><td><label><input type="text" name="playtime" pattern="0*[1-9][0-9]*" placeholder="Playtime" required></label></td></tr>
+        <tr><td><label><input type="text" name="fsk" pattern="0|6|12|16|18" placeholder="FSK" required></label></td></tr>
+    </table>
+    <button type="submit" name="add_movie" id="add_movie_button" class="btn bg-success"> Add Movie </button>
+</form>
 <form class="text-center" method="post">
     <button type="submit" name="reset_session" id="reset_session_button" class="btn btn-danger"> Reset Session </button>
 </form>
