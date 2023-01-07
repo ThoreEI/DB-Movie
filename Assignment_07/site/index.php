@@ -11,9 +11,8 @@ use Twig\Extension\StringLoaderExtension;
 use Twig\Loader\FilesystemLoader;
 $twig = new Environment(new FilesystemLoader('../src/'));
 $twig->addExtension(new StringLoaderExtension());
-
-$data_base = new DbMovie();
 session_start();
+$data_base = new DbMovie();
 
 if (isset($_POST["add_movie"]))
     $data_base->insert_record($_POST["title"], $_POST["director"], $_POST["year"], $_POST["playtime"], $_POST["fsk"]);

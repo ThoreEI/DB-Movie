@@ -5,7 +5,7 @@ class DbMovie {
     private PDO $pdo;
 
     public function __construct() {
-        $this->pdo = new PDO("sqlite:".join(DIRECTORY_SEPARATOR, [__DIR__,"..", "db", "movies.db"]));
+        $this->pdo = new PDO("sqlite:".join(DIRECTORY_SEPARATOR,[__DIR__,"..","database", "movies.database"]));
         $this->create_table();
         if (empty($this->load_movies("title", "asc")))
             $this->insert_default_movies();
@@ -44,6 +44,7 @@ class DbMovie {
         $statement = $this->pdo->prepare("INSERT INTO t_movies (title, director, 'year', playtime, fsk)
                                                 VALUES (:title, :director, :year, :playtime, :fsk);");
         $statement->execute([":title"=>$title, ":director"=>$director, ":year"=>$year, ":playtime"=>$playtime, ":fsk"=>$fsk]);
+        $statement=null;
     }
 
     public function delete_movie(string $movieID) {
