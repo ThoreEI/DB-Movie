@@ -5,7 +5,7 @@ class DbMovie {
     private PDO $pdo;
 
     public function __construct() {
-        $this->pdo = new PDO("sqlite:".join(DIRECTORY_SEPARATOR,[__DIR__,"..","database","movies.db"]));
+        $this->pdo = new PDO("sqlite:".join(DIRECTORY_SEPARATOR,[__DIR__,"..", "database", "movies.db"]));
         $this->create_table();
         if (empty($this->load_movies("title", "asc")))
             $this->insert_default_movies();
