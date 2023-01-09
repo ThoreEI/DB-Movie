@@ -1,12 +1,8 @@
 <?php
 namespace php;
-
 class Movie {
-    public string $title;
-    public string $director;
-    public int $year;
-    public int $playtime;
-    public int $fsk;
+    public string $title, $director;
+    public int $year, $playtime, $fsk;
 
     public function __construct($title, $director, $year, $playtime, $fsk) {
         $this->title = $title;
