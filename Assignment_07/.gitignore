@@ -1,0 +1,19 @@
+# Default ignored files
+/shelf/
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+/.idea/
+*/composer.phar
+*/composer.lock
+*/vendor/
+../src/database/
+
+/Assignment_01/
+/Assignment_02/
+/Assignment_03/
+/Assignment_04/
+/Assignment_05/
+/Assignment_06/
