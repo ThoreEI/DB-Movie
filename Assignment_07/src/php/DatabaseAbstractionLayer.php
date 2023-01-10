@@ -1,7 +1,7 @@
 <?php
 namespace php;
 use PDO;
-class DbMovie {
+class DatabaseAbstractionLayer {
     private static PDO $pdo;
 
     public function __construct() {
