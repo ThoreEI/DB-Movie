@@ -11,9 +11,9 @@ class DbMovie {
             $this->insert_default_movies();
     }
 
-    private static function create_table() {
+    private static function create_table(): void {
       self::$pdo->prepare("CREATE TABLE IF NOT EXISTS t_movies (
-                                    movieID INTEGER  PRIMARY KEY AUTOINCREMENT,
+                                    movieID INTEGER PRIMARY KEY AUTOINCREMENT,
                                     title VARCHAR(150) NOT NULL, 
                                     director VARCHAR(150) NOT NULL,
                                     'year' YEAR NOT NULL,
@@ -21,13 +21,15 @@ class DbMovie {
                                     fsk INTEGER NOT NULL);")->execute();
     }
 
-    public static function load_movies($sort_criterion, $order) {
+    public static function load_movies($sort_criterion, $order): bool|array
+    {
         $sort_criterion = in_array($sort_criterion, ["director", "year", "playtime", "fsk"]) ? $sort_criterion : "title";
            $order = $order == "asc" ?  "ASC" : "DESC";
         return self::$pdo->query("SELECT * FROM t_movies ORDER BY $sort_criterion $order")->fetchAll();
     }
 
-    public static function insert_default_movies() {
+    public static function insert_default_movies(): void
+    {
         $movies = [
             new Movie("The Grudge", "Takashi Shimizu", "2005", "91", "16"),
             new Movie("Lucy", "Luc Besson", "2014", "89", "12"),
@@ -40,15 +42,18 @@ class DbMovie {
             self::insert_record($movie->title, $movie->director, $movie->year, $movie->playtime, $movie->fsk);
     }
 
-    public static function insert_record(string $title, string $director, int $year, int $playtime, int $fsk) {
+    public static function insert_record(string $title, string $director, int $year, int $playtime, int $fsk): void
+    {
         $statement = self::$pdo->prepare("INSERT INTO t_movies (title, director, 'year', playtime, fsk)
                                                 VALUES (:title, :director, :year, :playtime, :fsk);");
         $statement->execute([":title"=>$title, ":director"=>$director, ":year"=>$year, ":playtime"=>$playtime, ":fsk"=>$fsk]);
-        $statement=null;
+        $statement = null;
     }
 
-    public static function delete_movie(string $movieID) {
+    public static function delete_movie(string $movieID): void
+    {
         $statement = self::$pdo->prepare("DELETE FROM t_movies WHERE movieID = :movieID");
         $statement->execute([":movieID"=>$movieID]);
+        $statement = null;
     }
 }
