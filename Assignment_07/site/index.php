@@ -11,6 +11,7 @@ use Twig\Extension\StringLoaderExtension;
 use Twig\Loader\FilesystemLoader;
 session_start();
 $pdo = new DatabaseAbstractionLayer();
+// TODO
 //setcookie("safe_cookie", 333333, secure: true, httponly: true);
 //foreach ($_COOKIE as $cookie)
 //    echo $cookie . "\n";
