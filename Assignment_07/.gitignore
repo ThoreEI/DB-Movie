@@ -4,7 +4,7 @@
 /httpRequests/
 # Datasource local storage ignored files
 /dataSources/
-/composer.phar/
+*/composer.phar/
 /composer.lock/
 */vendor/
 /src/database/movies.db

@@ -1,7 +1,6 @@
 {
   "require": {
-    "twig/twig": "^3.0",
+    "twig/twig": "^v3.1.0",
     "ext-pdo": "*",
     "ext-sqlite3": "*"
-  }
-}
+  },

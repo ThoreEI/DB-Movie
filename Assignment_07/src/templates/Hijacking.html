@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <style>
+      #blanket {
+        position: fixed;
+        background-color: rgba(0,0,0,0.0);
+        top: 0; bottom: 0; left: 0; right: 0;
+      }
+
+      #click {
+        border: 0;
+        overflow: hidden;
+        position: fixed;
+        top: 0; left: 0;
+        background-color: red;
+        width: 68px;
+        height: 18px;
+        background-color: rgba(0,0,0,0.0);
+        z-index: 1;
+      }
+    </style>
+  <script>
+    function followMouse(event) {
+      let click = document.getElementById("click");
+      click.style.top = event.pageY - 15 + "px";
+      click.style.left = event.pageX - 30 + "px";
+    }
+  </script>
+  <title>Hijacking</title>
+</head>
+<body>
+
+...
+
+<div id="blanket" onmousemove="followMouse(Event)"></div>
+
+<iframe onmousemove="followMouse(Event)" id="click"
+        src="Hijacking.html"></iframe>
+</body>
+</html>

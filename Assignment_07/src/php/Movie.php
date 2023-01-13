@@ -1,5 +1,4 @@
 <?php
-namespace php;
 class Movie {
     public string $title, $director;
     public int $year, $playtime, $fsk;
