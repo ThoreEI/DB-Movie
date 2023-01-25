@@ -11,10 +11,6 @@ use Twig\Extension\StringLoaderExtension;
 use Twig\Loader\FilesystemLoader;
 session_start();
 $pdo = new DatabaseAbstractionLayer();
-// TODO
-//setcookie("safe_cookie", 333333, secure: true, httponly: true);
-//foreach ($_COOKIE as $cookie)
-//    echo $cookie . "\n";
 
 if (isset($_POST["add_movie"]))
     $pdo->insert_record($_POST["title"], $_POST["director"], $_POST["year"], $_POST["playtime"], $_POST["fsk"]);
