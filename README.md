@@ -1,3 +1,7 @@
+# Movie-Database 
+Eine MySQLite-Datenbank realisiert mit Hilfe von PHP, Twig, HTML und CSS.
+Speichern, Einsehen, Sortieren und Hinzufügen von Filmen
+
 1. Repo klonen und Projekt importieren
 
 2. Twig, PDO, Sqlite3 einbinden.
